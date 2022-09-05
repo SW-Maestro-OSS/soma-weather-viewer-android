@@ -31,6 +31,7 @@ class HomeFragment : Fragment(), HomeFragmentListener {
     }
 
     override fun onClick5DaysButton() {
+        (activity as MainActivityUtil).navigateToWeatherFragment(this)
     }
 
     override fun onClickSettingButton() {

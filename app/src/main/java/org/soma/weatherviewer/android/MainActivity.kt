@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import org.soma.weatherviewer.android.databinding.ActivityMainBinding
 import org.soma.weatherviewer.common.MainActivityUtil
 import org.soma.weatherviewer.home.ui.HomeFragmentDirections
-import org.soma.weatherviewer.setting.SettingFragmentDirections
 
 class MainActivity : AppCompatActivity(), MainActivityUtil {
     private lateinit var binding: ActivityMainBinding
@@ -25,8 +24,8 @@ class MainActivity : AppCompatActivity(), MainActivityUtil {
         fragment.findNavController().navigate(directions)
     }
 
-    override fun navigateToHomeFragment(fragment: Fragment) {
-        val directions = SettingFragmentDirections.actionSettingFragmentToHomeFragment()
+    override fun navigateToWeatherFragment(fragment: Fragment) {
+        val directions = HomeFragmentDirections.actionHomeFragmentToWeatherFragment()
         fragment.findNavController().navigate(directions)
     }
 }

@@ -4,5 +4,5 @@ import androidx.fragment.app.Fragment
 
 interface MainActivityUtil {
     fun navigateToSettingFragment(fragment: Fragment)
-    fun navigateToHomeFragment(fragment: Fragment)
+    fun navigateToWeatherFragment(fragment: Fragment)
 }

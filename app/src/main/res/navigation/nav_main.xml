@@ -11,15 +11,19 @@
         <action
             android:id="@+id/action_homeFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/settingFragment"
         android:name="org.soma.weatherviewer.setting.SettingFragment"
-        android:label="SettingFragment" >
-        <action
-            android:id="@+id/action_settingFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        android:label="SettingFragment" />
+
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="org.soma.weatherviewer.home.ui.WeatherFragment"
+        android:label="WeatherListFragment" />
 
 </navigation>
