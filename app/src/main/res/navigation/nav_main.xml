@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="org.soma.weatherviewer.home.ui.HomeFragment"
+        android:name="org.soma.weatherviewer.home.HomeFragment"
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_settingFragment"
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/weatherFragment"
-        android:name="org.soma.weatherviewer.home.ui.WeatherFragment"
+        android:name="org.soma.weatherviewer.home.WeatherFragment"
         android:label="WeatherListFragment" />
 
 </navigation>

@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="weatherModel"
-            type="org.soma.weatherviewer.home.domain.model.WeatherModel" />
+            name="weather"
+            type="org.soma.weatherviewer.common.model.entity.Weather" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +30,7 @@
             android:id="@+id/image_icon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            photoUrl="@{weatherModel.weather.icon}"
+            photoUrl="@{weather.weather[0].icon}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_date"
@@ -41,7 +41,7 @@
             android:id="@+id/text_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{weatherModel.weather.description}"
+            android:text="@{weather.weather[0].description}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/image_icon"
@@ -53,7 +53,7 @@
             android:id="@+id/text_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/temp(weatherModel.temp)}"
+            android:text="@{@string/temp(weather.main.temp)}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_description"
@@ -65,7 +65,7 @@
             android:id="@+id/text_humidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/humidity(weatherModel.humidity)}"
+            android:text="@{@string/humidity(weather.main.humidity)}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_temp"

@@ -6,10 +6,10 @@
     <data>
         <variable
             name="viewModel"
-            type="org.soma.weatherviewer.home.ui.WeatherViewModel" />
+            type="org.soma.weatherviewer.home.WeatherViewModel" />
         <variable
             name="listener"
-            type="org.soma.weatherviewer.home.ui.WeatherFragmentListener" />
+            type="org.soma.weatherviewer.home.WeatherFragmentListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

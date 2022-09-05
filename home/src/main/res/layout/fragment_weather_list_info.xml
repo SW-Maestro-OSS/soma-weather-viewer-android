@@ -5,17 +5,17 @@
 
     <data>
         <variable
-            type="org.soma.weatherviewer.home.ui.WeatherListViewModel"
+            type="org.soma.weatherviewer.home.WeatherListViewModel"
             name="viewModel" />
         <variable
-            type="org.soma.weatherviewer.home.ui.WeatherAdapter"
+            type="org.soma.weatherviewer.home.WeatherAdapter"
             name="adapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.WeatherListInfoFragment">
+        tools:context=".WeatherListInfoFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

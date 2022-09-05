@@ -1,4 +1,4 @@
-package org.soma.weatherviewer.soma_foundation
+package org.soma.weatherviewer.foundation
 
 import org.junit.Test
 

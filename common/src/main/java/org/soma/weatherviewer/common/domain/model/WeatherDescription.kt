@@ -1,4 +1,4 @@
-package org.soma.weatherviewer.common.data
+package org.soma.weatherviewer.common.domain.model
 
 import com.google.gson.annotations.SerializedName
 import org.soma.weatherviewer.common.R

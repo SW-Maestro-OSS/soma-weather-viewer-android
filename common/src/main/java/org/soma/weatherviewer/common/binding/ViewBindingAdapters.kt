@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 @BindingAdapter("photoUrl")
-fun bindPhotoUrl(view: ImageView, photoUrl: String) {
+fun bindPhotoUrl(view: ImageView, photoUrl: String?) {
     Glide.with(view.context)
         .load(photoUrl)
         .into(view)

@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import org.soma.weatherviewer.android.databinding.ActivityMainBinding
 import org.soma.weatherviewer.common.MainActivityUtil
-import org.soma.weatherviewer.home.ui.HomeFragmentDirections
+import org.soma.weatherviewer.home.HomeFragmentDirections
 
 class MainActivity : AppCompatActivity(), MainActivityUtil {
     private lateinit var binding: ActivityMainBinding

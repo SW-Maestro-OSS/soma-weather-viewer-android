@@ -1,4 +1,4 @@
-package org.soma.weatherviewer.soma_foundation
+package org.soma.weatherviewer.foundation
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

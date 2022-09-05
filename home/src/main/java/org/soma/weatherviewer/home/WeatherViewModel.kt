@@ -1,6 +1,5 @@
-package org.soma.weatherviewer.home.ui
+package org.soma.weatherviewer.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
