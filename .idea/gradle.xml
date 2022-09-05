@@ -13,12 +13,11 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/common-ui" />
+            <option value="$PROJECT_DIR$/foundation" />
             <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/setting" />
-            <option value="$PROJECT_DIR$/soma-foundation" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

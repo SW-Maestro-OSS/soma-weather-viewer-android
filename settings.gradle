@@ -9,7 +9,7 @@ dependencyResolutionManagement {
 rootProject.name = "soma-weather-viewer-android"
 include ':app'
 include ':common-ui'
-include ':soma-foundation'
+include ':foundation'
 include ':home'
 include ':setting'
 include ':common'
