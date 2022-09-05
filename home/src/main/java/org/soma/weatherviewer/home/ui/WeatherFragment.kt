@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import org.soma.weatherviewer.home.R
 import org.soma.weatherviewer.home.databinding.FragmentWeatherBinding
 
-class WeatherFragment : Fragment(), WeatherListFragmentListener {
+class WeatherFragment : Fragment(), WeatherFragmentListener {
 
     private var _binding: FragmentWeatherBinding? = null
     private val binding get() = _binding!!
@@ -23,6 +23,7 @@ class WeatherFragment : Fragment(), WeatherListFragmentListener {
         _binding = FragmentWeatherBinding.inflate(inflater, container, false).also {
             it.lifecycleOwner = this
             it.viewModel = viewModel
+            it.listener = this
         }
 
         subscribeUi()
@@ -54,7 +55,7 @@ class WeatherFragment : Fragment(), WeatherListFragmentListener {
     }
 }
 
-interface WeatherListFragmentListener {
+interface WeatherFragmentListener {
     fun onClickBackButton()
     fun onClickSwitchButton()
 }

@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="org.soma.weatherviewer.home.ui.WeatherViewModel" />
+        <variable
+            name="listener"
+            type="org.soma.weatherviewer.home.ui.WeatherFragmentListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_arrow_back_24"
+            android:onClick="@{() -> listener.onClickBackButton()}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
@@ -29,8 +33,10 @@
             android:layout_height="wrap_content"
             android:text="@{viewModel.viewStatus == 0? @string/weather_list: @string/weather_detail}"
             android:clickable="true"
+            android:onClick="@{() -> listener.onClickSwitchButton()}"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="List"/>
 
         <FrameLayout
             android:id="@+id/fragment_container"
