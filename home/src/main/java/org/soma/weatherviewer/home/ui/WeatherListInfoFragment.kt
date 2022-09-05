@@ -23,6 +23,7 @@ class WeatherListInfoFragment : Fragment() {
         _binding = FragmentWeatherListInfoBinding.inflate(inflater, container, false).also {
             it.lifecycleOwner = this
             it.viewModel = viewModel
+            it.adapter = WeatherAdapter()
         }
 
         return binding.root
