@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">soma-weather-viewer-android</string>
+    <string name="clear_sky">Clear Sky</string>
+    <string name="few_clouds">Few Clouds</string>
+    <string name="scattered_clouds">Scattered Clouds</string>
+    <string name="broken_clouds">Broken Clouds</string>
+    <string name="shower_rain">Shower Rain</string>
+    <string name="rain">Rain</string>
+    <string name="thunderstorm">Thunderstorm</string>
+    <string name="snow">Snow</string>
+    <string name="mist">Mist</string>
+</resources>
