@@ -32,9 +32,10 @@ class WeatherFragment : Fragment(), WeatherFragmentListener {
     }
 
     private fun subscribeUi() {
-        viewModel.viewStatus.observe(this) {
-            // TODO: 값에 따라 분기
-            val fragment = WeatherDetailInfoFragment()
+        viewModel.viewStatus.observe(viewLifecycleOwner) {
+            val fragment =
+                if (viewModel.viewStatus.value == 0) WeatherDetailInfoFragment()
+                else WeatherListInfoFragment()
             childFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .commit()
