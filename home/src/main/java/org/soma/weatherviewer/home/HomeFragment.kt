@@ -5,14 +5,41 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import org.soma.weatherviewer.common.MainActivityUtil
+import org.soma.weatherviewer.home.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), HomeFragmentListener {
+
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = this@HomeFragment
+            listener = this@HomeFragment
+        }
+
+        return binding.root
     }
+
+    override fun onClick5DaysButton() {
+    }
+
+    override fun onClickSettingButton() {
+        (activity as MainActivityUtil).navigateToSettingFragment(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+}
+
+interface HomeFragmentListener {
+    fun onClick5DaysButton()
+    fun onClickSettingButton()
 }

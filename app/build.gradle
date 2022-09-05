@@ -1,7 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
 }
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 31
@@ -28,6 +30,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
     }
 }
 
