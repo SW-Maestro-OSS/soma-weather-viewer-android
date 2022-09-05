@@ -20,7 +20,10 @@ class WeatherDetailInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentWeatherDetailInfoBinding.inflate(inflater, container, false)
+        _binding = FragmentWeatherDetailInfoBinding.inflate(inflater, container, false).also {
+            it.lifecycleOwner = this
+            it.viewModel = viewModel
+        }
 
         return binding.root
     }

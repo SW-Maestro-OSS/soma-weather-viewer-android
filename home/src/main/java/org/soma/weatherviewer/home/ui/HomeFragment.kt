@@ -1,12 +1,12 @@
-package org.soma.weatherviewer.home
+package org.soma.weatherviewer.home.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import org.soma.weatherviewer.common.MainActivityUtil
+import org.soma.weatherviewer.home.R
 import org.soma.weatherviewer.home.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment(), HomeFragmentListener {
@@ -22,6 +22,10 @@ class HomeFragment : Fragment(), HomeFragmentListener {
             lifecycleOwner = this@HomeFragment
             listener = this@HomeFragment
         }
+
+        childFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, WeatherDetailInfoFragment())
+            .commit()
 
         return binding.root
     }
