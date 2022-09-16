@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dagger.hilt.android.AndroidEntryPoint
 import org.soma.weatherviewer.common.MainActivityUtil
 import org.soma.weatherviewer.home.databinding.FragmentHomeBinding
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(), HomeFragmentListener {
 
     private var _binding: FragmentHomeBinding? = null

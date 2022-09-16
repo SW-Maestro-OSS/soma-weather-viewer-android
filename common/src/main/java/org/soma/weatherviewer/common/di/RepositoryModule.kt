@@ -1,22 +1,23 @@
 package org.soma.weatherviewer.common.di
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import org.soma.weatherviewer.common.domain.usecase.WeatherUseCase
 import org.soma.weatherviewer.common.repository.WeatherRepository
-import org.soma.weatherviewer.foundation.NetworkUtil
+import org.soma.weatherviewer.common.repository.WeatherRepositoryImpl
 import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+abstract class RepositoryModule {
 
-    @Provides
-    @Singleton
-    @Named("WeatherRepository")
-    fun provideWeatherRepository(): WeatherRepository {
-        return NetworkUtil.create(WeatherRepository::class.java)
-    }
+    @Binds
+    abstract fun bindsWeatherRepository(
+        repository: WeatherRepositoryImpl
+    ) : WeatherRepository
+
 }
