@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import dagger.hilt.android.AndroidEntryPoint
 import org.soma.weatherviewer.common.MainActivityUtil
 import org.soma.weatherviewer.home.databinding.FragmentHomeBinding
+import org.soma.weatherviewer.home.detail.WeatherDetailInfoFragment
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), HomeFragmentListener {

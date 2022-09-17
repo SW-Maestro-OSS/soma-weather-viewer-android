@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.soma.weatherviewer.home.databinding.FragmentWeatherBinding
+import org.soma.weatherviewer.home.detail.WeatherDetailInfoFragment
+import org.soma.weatherviewer.home.list.WeatherListInfoFragment
 
 @AndroidEntryPoint
 class WeatherFragment : Fragment(), WeatherFragmentListener {
@@ -26,7 +28,6 @@ class WeatherFragment : Fragment(), WeatherFragmentListener {
             it.viewModel = viewModel
             it.listener = this
         }
-
         viewModel.getWeatherApi()
         subscribeUi()
 

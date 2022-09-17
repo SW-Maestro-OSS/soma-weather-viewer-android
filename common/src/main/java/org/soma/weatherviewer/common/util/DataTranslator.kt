@@ -12,6 +12,7 @@ object DataTranslator {
                     data.weather[0].id,
                     data.weather[0].main,
                     data.weather[0].description,
+                    data.dt_txt,
                     "http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png",
                     data.main.temp,
                     data.main.tempMax,

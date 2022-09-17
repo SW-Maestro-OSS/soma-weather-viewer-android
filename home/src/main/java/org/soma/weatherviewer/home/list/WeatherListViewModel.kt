@@ -1,4 +1,4 @@
-package org.soma.weatherviewer.home
+package org.soma.weatherviewer.home.list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

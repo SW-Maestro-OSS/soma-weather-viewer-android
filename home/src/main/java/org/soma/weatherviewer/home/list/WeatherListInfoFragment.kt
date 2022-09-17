@@ -1,4 +1,4 @@
-package org.soma.weatherviewer.home
+package org.soma.weatherviewer.home.list
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import org.soma.weatherviewer.home.WeatherAdapter
 import org.soma.weatherviewer.home.databinding.FragmentWeatherListInfoBinding
 
 class WeatherListInfoFragment : Fragment() {
