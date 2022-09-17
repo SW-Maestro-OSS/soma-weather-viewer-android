@@ -22,24 +22,24 @@ class DataStoreUseCase @Inject constructor(
     // Celsius, Fahrenheit
     val tempType: Flow<String> =
         dataStore.data.map { preferences ->
-            preferences[stringPreferencesKey(DATASTORE_TEMP_TYPE_KEY)] ?: "Celsius"
+            preferences[stringPreferencesKey(DATASTORE_TEMP_TYPE_KEY)] ?: TempType.Celsius.name
         }
 
     // Current, FiveDays
     val homeScreenOption: Flow<String> =
         dataStore.data.map { preferences ->
-            preferences[stringPreferencesKey(DATASTORE_HOME_SCREEN_OPTION_KEY)] ?: "Current"
+            preferences[stringPreferencesKey(DATASTORE_HOME_SCREEN_OPTION_KEY)] ?: HomeScreenOptionType.Current.name
         }
 
-    suspend fun editTempType(tempType: String) {
+    suspend fun editTempType(tempType: TempType) {
         dataStore.edit {
-            it[stringPreferencesKey(DATASTORE_TEMP_TYPE_KEY)] = tempType
+            it[stringPreferencesKey(DATASTORE_TEMP_TYPE_KEY)] = tempType.name
         }
     }
 
-    suspend fun editHomeScreenOption(homeScreenOptions: String) {
+    suspend fun editHomeScreenOption(homeScreenOptionType: HomeScreenOptionType) {
         dataStore.edit {
-            it[stringPreferencesKey(DATASTORE_HOME_SCREEN_OPTION_KEY)] = homeScreenOptions
+            it[stringPreferencesKey(DATASTORE_HOME_SCREEN_OPTION_KEY)] = homeScreenOptionType.name
         }
     }
 
@@ -52,6 +52,18 @@ class DataStoreUseCase @Inject constructor(
     suspend fun removeHomeScreenOption() {
         dataStore.edit {
             it.remove(stringPreferencesKey(DATASTORE_HOME_SCREEN_OPTION_KEY))
+        }
+    }
+
+    companion object {
+        enum class TempType(string: String) {
+            Fahrenheit("Fahrenheit"),
+            Celsius("Celsius")
+        }
+
+        enum class HomeScreenOptionType(string: String) {
+            Current("Current"),
+            FiveDays("FiveDays")
         }
     }
 }
