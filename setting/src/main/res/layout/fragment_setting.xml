@@ -6,6 +6,11 @@
         <variable
             name="listener"
             type="org.soma.weatherviewer.setting.SettingFragmentListener" />
+        <variable
+            name="viewModel"
+            type="org.soma.weatherviewer.setting.SettingViewModel" />
+        <import type="org.soma.weatherviewer.common.util.TempType" />
+        <import type="org.soma.weatherviewer.common.util.HomeScreenOptionType" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -39,11 +44,15 @@
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="@{viewModel.tempType == TempType.Celsius.name()}"
+                android:onClick="@{() -> listener.onClickCelsiusButton()}"
                 android:text="@string/temp_option_f"
                 />
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="@{viewModel.tempType == TempType.Fahrenheit.name()}"
+                android:onClick="@{() -> listener.onClickFahrenheitButton()}"
                 android:text="@string/temp_option_c"
                 />
         </RadioGroup>
@@ -66,11 +75,15 @@
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="@{viewModel.homeScreenOptionType == HomeScreenOptionType.Current.name()}"
+                android:onClick="@{() -> listener.onClickCurrentButton()}"
                 android:text="@string/home_option_current"
                 />
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="@{viewModel.homeScreenOptionType == HomeScreenOptionType.FiveDays.name()}"
+                android:onClick="@{() -> listener.onClickFiveDaysButton()}"
                 android:text="@string/home_option_5days"
                 />
         </RadioGroup>

@@ -8,6 +8,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import org.soma.weatherviewer.common.util.DATASTORE_HOME_SCREEN_OPTION_KEY
 import org.soma.weatherviewer.common.util.DATASTORE_TEMP_TYPE_KEY
+import org.soma.weatherviewer.common.util.HomeScreenOptionType
+import org.soma.weatherviewer.common.util.TempType
 import javax.inject.Inject
 
 
@@ -22,24 +24,24 @@ class DataStoreUseCase @Inject constructor(
     // Celsius, Fahrenheit
     val tempType: Flow<String> =
         dataStore.data.map { preferences ->
-            preferences[stringPreferencesKey(DATASTORE_TEMP_TYPE_KEY)] ?: "Celsius"
+            preferences[stringPreferencesKey(DATASTORE_TEMP_TYPE_KEY)] ?: TempType.Celsius.name
         }
 
     // Current, FiveDays
     val homeScreenOption: Flow<String> =
         dataStore.data.map { preferences ->
-            preferences[stringPreferencesKey(DATASTORE_HOME_SCREEN_OPTION_KEY)] ?: "Current"
+            preferences[stringPreferencesKey(DATASTORE_HOME_SCREEN_OPTION_KEY)] ?: HomeScreenOptionType.Current.name
         }
 
-    suspend fun editTempType(tempType: String) {
+    suspend fun editTempType(tempType: TempType) {
         dataStore.edit {
-            it[stringPreferencesKey(DATASTORE_TEMP_TYPE_KEY)] = tempType
+            it[stringPreferencesKey(DATASTORE_TEMP_TYPE_KEY)] = tempType.name
         }
     }
 
-    suspend fun editHomeScreenOption(homeScreenOptions: String) {
+    suspend fun editHomeScreenOption(homeScreenOptionType: HomeScreenOptionType) {
         dataStore.edit {
-            it[stringPreferencesKey(DATASTORE_HOME_SCREEN_OPTION_KEY)] = homeScreenOptions
+            it[stringPreferencesKey(DATASTORE_HOME_SCREEN_OPTION_KEY)] = homeScreenOptionType.name
         }
     }
 

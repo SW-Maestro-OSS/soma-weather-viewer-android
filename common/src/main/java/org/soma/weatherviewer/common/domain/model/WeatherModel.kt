@@ -15,28 +15,36 @@ data class WeatherModel(
     var tempMin: Float,
     val humidity: Int
 ) {
-    fun applyFahrenheitToCelsius() {
-        this.temp = calcFahrenheitToCelsius(this.temp)
-        this.tempMax = calcFahrenheitToCelsius(this.tempMax)
-        this.tempMin = calcFahrenheitToCelsius(this.tempMin)
+    fun applyFahrenheitToCelsius(): WeatherModel {
+        return this.apply {
+            temp = calcFahrenheitToCelsius(this.temp)
+            tempMax = calcFahrenheitToCelsius(this.tempMax)
+            tempMin = calcFahrenheitToCelsius(this.tempMin)
+        }
     }
 
-    fun applyCelsiusToFahrenheit() {
-        this.temp = calcCelsiusToFahrenheit(this.temp)
-        this.tempMax = calcCelsiusToFahrenheit(this.tempMax)
-        this.tempMin = calcCelsiusToFahrenheit(this.tempMin)
+    fun applyCelsiusToFahrenheit(): WeatherModel {
+        return this.apply {
+            temp = calcCelsiusToFahrenheit(this.temp)
+            tempMax = calcCelsiusToFahrenheit(this.tempMax)
+            tempMin = calcCelsiusToFahrenheit(this.tempMin)
+        }
     }
 
-    fun applyKelvinToCelsius() {
-        this.temp = calcKelvinToCelsius(this.temp)
-        this.tempMax = calcKelvinToCelsius(this.tempMax)
-        this.tempMin = calcKelvinToCelsius(this.tempMin)
+    fun applyKelvinToCelsius(): WeatherModel {
+        return this.apply {
+            temp = calcKelvinToCelsius(this.temp)
+            tempMax = calcKelvinToCelsius(this.tempMax)
+            tempMin = calcKelvinToCelsius(this.tempMin)
+        }
     }
 
-    fun applyKelvinToFahrenheit() {
-        this.temp = calcKelvinToFahrenheit(this.temp)
-        this.tempMax = calcKelvinToFahrenheit(this.tempMax)
-        this.tempMin = calcKelvinToFahrenheit(this.tempMin)
+    fun applyKelvinToFahrenheit(): WeatherModel {
+        return this.apply {
+            temp = calcKelvinToFahrenheit(this.temp)
+            tempMax = calcKelvinToFahrenheit(this.tempMax)
+            tempMin = calcKelvinToFahrenheit(this.tempMin)
+        }
     }
 
     private fun calcFahrenheitToCelsius(temp: Float): Float = (temp - 32) / 1.8f
