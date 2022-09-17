@@ -8,6 +8,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import org.soma.weatherviewer.common.util.DATASTORE_HOME_SCREEN_OPTION_KEY
 import org.soma.weatherviewer.common.util.DATASTORE_TEMP_TYPE_KEY
+import org.soma.weatherviewer.common.util.HomeScreenOptionType
+import org.soma.weatherviewer.common.util.TempType
 import javax.inject.Inject
 
 
@@ -52,18 +54,6 @@ class DataStoreUseCase @Inject constructor(
     suspend fun removeHomeScreenOption() {
         dataStore.edit {
             it.remove(stringPreferencesKey(DATASTORE_HOME_SCREEN_OPTION_KEY))
-        }
-    }
-
-    companion object {
-        enum class TempType(string: String) {
-            Fahrenheit("Fahrenheit"),
-            Celsius("Celsius")
-        }
-
-        enum class HomeScreenOptionType(string: String) {
-            Current("Current"),
-            FiveDays("FiveDays")
         }
     }
 }

@@ -4,6 +4,7 @@ import kotlinx.coroutines.flow.first
 import org.soma.weatherviewer.common.domain.model.WeatherModel
 import org.soma.weatherviewer.common.repository.WeatherRepository
 import org.soma.weatherviewer.common.util.DataTranslator.toWeatherModelList
+import org.soma.weatherviewer.common.util.TempType
 import javax.inject.Inject
 
 class WeatherUseCase @Inject constructor(
@@ -14,7 +15,7 @@ class WeatherUseCase @Inject constructor(
         val weatherList = weatherRepository.getFiveDaysWeather(lat, lon).list
         val weatherModelList = weatherList.toWeatherModelList()
         return when (dataStoreUseCase.tempType.first()) {
-            DataStoreUseCase.Companion.TempType.Celsius.name -> weatherModelList.map { it.applyKelvinToCelsius() }
+            TempType.Celsius.name -> weatherModelList.map { it.applyKelvinToCelsius() }
             else -> weatherModelList.map { it.applyKelvinToFahrenheit() }
         }
     }
