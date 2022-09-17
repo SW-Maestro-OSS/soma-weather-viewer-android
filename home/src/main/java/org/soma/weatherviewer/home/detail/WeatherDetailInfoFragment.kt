@@ -1,4 +1,4 @@
-package org.soma.weatherviewer.home
+package org.soma.weatherviewer.home.detail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
+import org.soma.weatherviewer.home.WeatherViewModel
 import org.soma.weatherviewer.home.databinding.FragmentWeatherDetailInfoBinding
 
 @AndroidEntryPoint
