@@ -26,7 +26,6 @@ class WeatherFragment : Fragment(), WeatherFragmentListener {
             it.viewModel = viewModel
             it.listener = this
         }
-
         viewModel.getWeatherApi()
         subscribeUi()
 
@@ -49,7 +48,7 @@ class WeatherFragment : Fragment(), WeatherFragmentListener {
     }
 
     override fun onClickSwitchButton() {
-        viewModel.switchViewStatus()
+        //viewModel.switchViewStatus()
     }
 
     override fun onDestroy() {

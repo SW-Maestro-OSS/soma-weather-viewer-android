@@ -8,6 +8,7 @@ import org.soma.weatherviewer.common.model.entity.WeatherMain
 data class WeatherModel(
     val id: Long,
     val main: String,
+    val dt_txt: String,
     val description: String,
     val iconUrl: String,
     var temp: Float,
