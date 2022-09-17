@@ -19,5 +19,4 @@ abstract class RepositoryModule {
     abstract fun bindsWeatherRepository(
         repository: WeatherRepositoryImpl
     ) : WeatherRepository
-
 }

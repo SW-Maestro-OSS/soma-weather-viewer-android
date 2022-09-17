@@ -15,20 +15,36 @@ data class WeatherModel(
     var tempMin: Float,
     val humidity: Int
 ) {
-    fun applyCelsius() {
-        this.temp = calcCelsius(this.temp)
-        this.tempMax = calcCelsius(this.tempMax)
-        this.tempMin = calcCelsius(this.tempMin)
+    fun applyFahrenheitToCelsius() {
+        this.temp = calcFahrenheitToCelsius(this.temp)
+        this.tempMax = calcFahrenheitToCelsius(this.tempMax)
+        this.tempMin = calcFahrenheitToCelsius(this.tempMin)
     }
 
-    fun applyFahrenheit() {
-        this.temp = calcFahrenheit(this.temp)
-        this.tempMax = calcFahrenheit(this.tempMax)
-        this.tempMin = calcFahrenheit(this.tempMin)
+    fun applyCelsiusToFahrenheit() {
+        this.temp = calcCelsiusToFahrenheit(this.temp)
+        this.tempMax = calcCelsiusToFahrenheit(this.tempMax)
+        this.tempMin = calcCelsiusToFahrenheit(this.tempMin)
     }
 
-    private fun calcCelsius(temp: Float): Float = (temp - 32) / 1.8f
+    fun applyKelvinToCelsius() {
+        this.temp = calcKelvinToCelsius(this.temp)
+        this.tempMax = calcKelvinToCelsius(this.tempMax)
+        this.tempMin = calcKelvinToCelsius(this.tempMin)
+    }
 
-    private fun calcFahrenheit(temp: Float): Float = temp * 1.8f + 32
+    fun applyKelvinToFahrenheit() {
+        this.temp = calcKelvinToFahrenheit(this.temp)
+        this.tempMax = calcKelvinToFahrenheit(this.tempMax)
+        this.tempMin = calcKelvinToFahrenheit(this.tempMin)
+    }
+
+    private fun calcFahrenheitToCelsius(temp: Float): Float = (temp - 32) / 1.8f
+
+    private fun calcCelsiusToFahrenheit(temp: Float): Float = temp * 1.8f + 32
+
+    private fun calcKelvinToCelsius(temp: Float): Float = temp - 273.15f
+
+    private fun calcKelvinToFahrenheit(temp: Float): Float = (temp - 273.15f) * 9 /5f + 32
 
 }

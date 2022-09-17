@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import org.soma.weatherviewer.common.domain.usecase.WeatherUseCase
 import javax.inject.Inject
@@ -25,7 +23,7 @@ class WeatherViewModel @Inject constructor(
 
     fun getWeatherApi() {
         viewModelScope.launch {
-            val data = weatherUseCase.getFiveDaysWeather(56f, 127f)
+            val data = weatherUseCase.getFiveDaysWeather(37f, 127f)
             Log.d("WeatherViewModel", "getWeatherApi: ${data}")
         }
     }
