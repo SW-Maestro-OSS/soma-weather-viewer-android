@@ -43,6 +43,10 @@ class HomeFragment : Fragment(), HomeFragmentListener {
         super.onDestroy()
         _binding = null
     }
+
+    companion object {
+
+    }
 }
 
 interface HomeFragmentListener {

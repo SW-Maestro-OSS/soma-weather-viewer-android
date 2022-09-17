@@ -1,2 +1,3 @@
 /build
 /src/main/java/org/soma/weatherviewer/common/util/ApiKey.kt
+/src/main/java/org/soma/weatherviewer/common/util/Constants.kt
