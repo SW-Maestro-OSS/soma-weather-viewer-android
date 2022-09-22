@@ -19,7 +19,7 @@
             android:id="@+id/button_shows_5_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show 5 Days"
+            android:text="@string/show_five_days_button"
             android:onClick="@{() -> listener.onClick5DaysButton()}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
