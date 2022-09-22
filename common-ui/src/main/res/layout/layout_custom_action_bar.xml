@@ -14,8 +14,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
-            android:paddingLeft="@dimen/margin_custom_action_bar"
-            android:paddingRight="@dimen/margin_custom_action_bar"
             android:src="@drawable/ic_baseline_arrow_back_24"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             app:onBackPressed="@{true}"
