@@ -32,8 +32,10 @@
             android:text="@{viewModel.viewStatus == 0? @string/weather_list: @string/weather_detail}"
             android:clickable="true"
             android:onClick="@{() -> listener.onClickSwitchButton()}"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/custom_action_bar"
+            app:layout_constraintBottom_toBottomOf="@id/custom_action_bar"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/margin_custom_action_bar"
             tools:text="List"/>
 
         <FrameLayout
