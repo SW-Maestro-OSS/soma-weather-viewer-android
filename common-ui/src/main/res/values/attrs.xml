@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomActionBar">
+        <attr name="id" format="string"/>
+        <attr name="title" format="string"/>
+        <attr name="titleSize" format="dimension"/>
+        <attr name="hasBackButton" format="boolean"/>
+    </declare-styleable>
+</resources>
