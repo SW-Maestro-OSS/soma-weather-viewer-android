@@ -1,4 +1,4 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment_title">Soma Weather Viewer</string>
+    <string name="show_five_days_button">Show 5 Days</string>
 </resources>
