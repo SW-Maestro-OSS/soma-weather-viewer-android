@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="15dp">
 
         <ImageButton
             android:id="@+id/image_backbutton"
@@ -31,7 +31,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             tools:text="Title"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

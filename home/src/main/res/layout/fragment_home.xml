@@ -15,13 +15,20 @@
         android:padding="16dp"
         tools:context=".HomeFragment">
 
+        <org.soma.weatherviewer.common_ui.CustomActionBar
+            android:id="@+id/custom_action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/home_fragment_title"
+            app:layout_constraintTop_toTopOf="parent"/>
+
         <Button
             android:id="@+id/button_shows_5_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/show_five_days_button"
             android:onClick="@{() -> listener.onClick5DaysButton()}"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/custom_action_bar"
             app:layout_constraintStart_toStartOf="parent"
             />
 
@@ -30,7 +37,7 @@
             android:layout_height="50dp"
             android:src="@drawable/ic_baseline_settings_24"
             android:onClick="@{() -> listener.onClickSettingButton()}"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/custom_action_bar"
             app:layout_constraintEnd_toEndOf="parent"
             android:clickable="true"/>
 
