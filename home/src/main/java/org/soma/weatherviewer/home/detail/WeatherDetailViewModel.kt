@@ -12,7 +12,8 @@ import org.soma.weatherviewer.common.domain.usecase.WeatherUseCase
 import org.soma.weatherviewer.common.model.entity.Weather
 
 class WeatherDetailInfoViewModel(
-    private val weatherUseCase: WeatherUseCase
+    private val weatherUseCase: WeatherUseCase,
+    private val viewPagerIndex: Int
 ): ViewModel() {
     private var _weather = MutableStateFlow(WeatherModel.dummy())
     val weather: StateFlow<WeatherModel> get() = _weather
@@ -20,7 +21,7 @@ class WeatherDetailInfoViewModel(
     fun getWeatherApi() {
         viewModelScope.launch {
             val data = weatherUseCase.getFiveDaysWeather(37f, 127f)
-            _weather.value = data[0]
+            _weather.value = data[viewPagerIndex*8]
         }
     }
 }
