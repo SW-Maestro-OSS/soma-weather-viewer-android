@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.soma.weatherviewer.home.databinding.FragmentWeatherBinding
+import org.soma.weatherviewer.home.detail.WeatherDetailFragment
 import org.soma.weatherviewer.home.detail.WeatherDetailInfoFragment
 import org.soma.weatherviewer.home.list.WeatherListInfoFragment
 
@@ -37,7 +38,7 @@ class WeatherFragment : Fragment(), WeatherFragmentListener {
     private fun subscribeUi() {
         viewModel.viewStatus.observe(viewLifecycleOwner) {
             val fragment =
-                if (viewModel.viewStatus.value == 0) WeatherDetailInfoFragment()
+                if (viewModel.viewStatus.value == 0) WeatherDetailFragment.newInstance()
                 else WeatherListInfoFragment()
             childFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)

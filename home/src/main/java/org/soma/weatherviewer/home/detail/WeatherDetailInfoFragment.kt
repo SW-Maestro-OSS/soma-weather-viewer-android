@@ -18,7 +18,7 @@ class WeatherDetailInfoFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val weatherUseCase = (requireActivity() as HasAppContainer).appContainer.weatherUseCase
         viewModel = WeatherDetailInfoViewModel(weatherUseCase)
@@ -36,5 +36,16 @@ class WeatherDetailInfoFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object {
+        private const val POSITION_KEY = "POSITION_KEY"
+        fun newInstance(position: Int) : Fragment {
+            val fragment = WeatherDetailInfoFragment()
+            val bundle = Bundle()
+            bundle.putInt(POSITION_KEY, position)
+            fragment.arguments = bundle
+            return fragment
+        }
     }
 }
