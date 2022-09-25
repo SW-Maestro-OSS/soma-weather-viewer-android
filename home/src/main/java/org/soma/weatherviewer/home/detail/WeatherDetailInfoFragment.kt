@@ -17,12 +17,14 @@ class WeatherDetailInfoFragment : Fragment() {
     private var _binding: FragmentWeatherDetailInfoBinding? = null
     private val binding get() = _binding!!
 
+    //private val viewModel by viewModels<WeatherViewModel>(ownerProducer = { requireParentFragment() })
+
     private val viewModel: WeatherViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentWeatherDetailInfoBinding.inflate(inflater, container, false).also {
             it.lifecycleOwner = this
             it.viewModel = viewModel
@@ -43,5 +45,16 @@ class WeatherDetailInfoFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object {
+        private const val POSITION_KEY = "POSITION_KEY"
+        fun newInstance(position: Int) : Fragment {
+            val fragment = WeatherDetailInfoFragment()
+            val bundle = Bundle()
+            bundle.putInt(POSITION_KEY, position)
+            fragment.arguments = bundle
+            return fragment
+        }
     }
 }

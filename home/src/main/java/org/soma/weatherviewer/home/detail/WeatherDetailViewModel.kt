@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import org.soma.weatherviewer.common.model.entity.Weather
 
-class WeatherDetailInfoViewModel: ViewModel() {
+class WeatherDetailViewModel: ViewModel() {
     // TODO: WeatherDetailRepository by Hilt
     var weather = MutableLiveData<Weather?>(null)
 
