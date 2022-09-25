@@ -18,13 +18,12 @@
                 android:id="@+id/text_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.weatherList[0].dt_txt}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{@string/date_format_y_m_d(viewModel.weatherList[0].year, viewModel.weatherList[0].month, viewModel.weatherList[0].day)}"
                 tools:text="2022년 9월 5일(월)"
                 />
-
             <ImageView
                 android:id="@+id/image_description_icon"
                 android:layout_width="70dp"
