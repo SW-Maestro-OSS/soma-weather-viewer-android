@@ -1,12 +1,29 @@
 package org.soma.weatherviewer.home.list
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import org.soma.weatherviewer.common.domain.model.WeatherModel
+import org.soma.weatherviewer.common.domain.usecase.WeatherUseCase
 import org.soma.weatherviewer.common.model.entity.Weather
+import javax.inject.Inject
 
-class WeatherListViewModel: ViewModel() {
-    // TODO: by Hilt
-    val weatherModelList = MutableLiveData(listOf<Weather>())
+@HiltViewModel
+class WeatherListViewModel  @Inject constructor(
+    private val weatherUseCase : WeatherUseCase
+) : ViewModel() {
+    private val _weatherModelList = MutableLiveData<List<WeatherModel>>()
+    val weatherModelList : LiveData<List<WeatherModel>> = _weatherModelList
+
+    fun getWeatherList() {
+        viewModelScope.launch {
+            val data = weatherUseCase.getFiveDaysWeather(37f, 127f)
+            Log.d("WeatherListViewModel", "getWeatherList(): ${data}")
+            _weatherModelList.postValue(data)
+        }
+    }
 }
