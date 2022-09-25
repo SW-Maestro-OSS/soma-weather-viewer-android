@@ -21,7 +21,7 @@ class WeatherDetailInfoFragment : Fragment() {
     ): View {
 
         val weatherUseCase = (requireActivity() as HasAppContainer).appContainer.weatherUseCase
-        viewModel = WeatherDetailInfoViewModel(weatherUseCase)
+        viewModel = WeatherDetailInfoViewModel(weatherUseCase, arguments?.getInt(POSITION_KEY)?:0)
 
         _binding = FragmentWeatherDetailInfoBinding.inflate(inflater, container, false).also {
             it.lifecycleOwner = this

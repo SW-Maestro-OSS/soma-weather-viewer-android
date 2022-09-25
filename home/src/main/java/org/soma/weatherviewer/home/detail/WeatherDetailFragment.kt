@@ -18,8 +18,6 @@ class WeatherDetailFragment : Fragment(){
 
     private val viewModel by viewModels<WeatherViewModel>(ownerProducer = { requireParentFragment() })
 
-//    private val viewModel: WeatherDetailViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,8 +27,6 @@ class WeatherDetailFragment : Fragment(){
             it.viewModel = viewModel
         }
 
-
-        Log.e("ASD", "ASD")
         binding.weatherDetailViewpager.apply {
             adapter = WeatherDetailAdapter(this@WeatherDetailFragment)
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
