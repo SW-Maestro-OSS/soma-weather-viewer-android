@@ -5,9 +5,9 @@
       <map>
         <entry key="..\:/Users/fchop/Development/AndroidStudioProjects/soma-weather-viewer-android/home/src/main/res/layout/activity_home.xml" value="0.12635869565217392" />
         <entry key="home/src/main/res/layout/fragment_weather.xml" value="0.1828774062816616" />
-        <entry key="home/src/main/res/layout/fragment_weather_detail_info.xml" value="0.1828774062816616" />
+        <entry key="home/src/main/res/layout/fragment_weather_detail_info.xml" value="0.1" />
         <entry key="home/src/main/res/layout/fragment_weather_list_info.xml" value="0.1828774062816616" />
-        <entry key="home/src/main/res/layout/item_weather.xml" value="0.1828774062816616" />
+        <entry key="home/src/main/res/layout/item_weather.xml" value="0.33" />
       </map>
     </option>
   </component>

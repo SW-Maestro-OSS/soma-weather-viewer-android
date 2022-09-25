@@ -5,7 +5,7 @@
     <data>
         <variable
             name="weather"
-            type="org.soma.weatherviewer.common.model.entity.Weather" />
+            type="org.soma.weatherviewer.common.domain.model.WeatherModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,7 @@
             android:id="@+id/text_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="9월 5일 (토)"
+            android:text="@{weather.dt_txt}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
             android:id="@+id/image_icon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            photoUrl="@{weather.weather[0].icon}"
+            photoUrl="@{weather.iconUrl}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_date"
@@ -41,7 +41,7 @@
             android:id="@+id/text_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{weather.weather[0].description}"
+            android:text="@{weather.description}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/image_icon"
@@ -53,7 +53,7 @@
             android:id="@+id/text_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/temp(weather.main.temp)}"
+            android:text="@{@string/temp(weather.temp)}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_description"
@@ -65,7 +65,7 @@
             android:id="@+id/text_humidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/humidity(weather.main.humidity)}"
+            android:text="@{@string/humidity(weather.humidity)}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_temp"
