@@ -11,8 +11,10 @@ object DataTranslator {
                 WeatherModel(
                     data.weather[0].id,
                     data.weather[0].main,
+                    getDateYear(data.dt_txt),
+                    getDateMonth(data.dt_txt),
+                    getDateDay(data.dt_txt),
                     data.weather[0].description,
-                    data.dt_txt,
                     "http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png",
                     data.main.temp,
                     data.main.tempMax,
@@ -24,6 +26,7 @@ object DataTranslator {
         return weatherList.toList()
     }
 
-
-
-    }
+    fun getDateYear(datetime: String) = datetime.substring(0,4)
+    fun getDateMonth(datetime: String) = datetime.substring(6, 7)
+    fun getDateDay(datetime: String) = datetime.substring(8, 10)
+}

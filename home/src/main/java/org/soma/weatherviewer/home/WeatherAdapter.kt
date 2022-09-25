@@ -23,6 +23,7 @@ class WeatherAdapter: ListAdapter<WeatherModel, RecyclerView.ViewHolder>(Weather
     class WeatherViewHolder(private val binding: ItemWeatherBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(weather: WeatherModel) {
             binding.weather = weather
+            //binding.textDate.text = DateUtils(binding.root.context).datetimeToDate(weather.dt_txt)
             binding.executePendingBindings()
         }
     }

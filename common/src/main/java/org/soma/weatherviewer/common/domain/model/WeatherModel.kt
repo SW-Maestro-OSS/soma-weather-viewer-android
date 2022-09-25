@@ -1,14 +1,13 @@
 package org.soma.weatherviewer.common.domain.model
 
-import com.google.gson.annotations.SerializedName
-import org.soma.weatherviewer.common.model.entity.Weather
-import org.soma.weatherviewer.common.model.entity.WeatherInfo
-import org.soma.weatherviewer.common.model.entity.WeatherMain
+import android.text.format.DateUtils
 
 data class WeatherModel(
     val id: Long,
     val main: String,
-    val dt_txt: String,
+    val year: String,
+    val month: String,
+    val day: String,
     val description: String,
     val iconUrl: String,
     var temp: Float,
@@ -16,6 +15,7 @@ data class WeatherModel(
     var tempMin: Float,
     val humidity: Int
 ) {
+
     fun applyFahrenheitToCelsius(): WeatherModel {
         return this.apply {
             temp = calcFahrenheitToCelsius(this.temp)
