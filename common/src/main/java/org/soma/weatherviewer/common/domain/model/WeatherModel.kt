@@ -56,4 +56,8 @@ data class WeatherModel(
 
     private fun calcKelvinToFahrenheit(temp: Float): Float = (temp - 273.15f) * 9 /5f + 32
 
+
+    companion object {
+        fun dummy() = WeatherModel(0,"","","","",0f,0f,0f,0)
+    }
 }
