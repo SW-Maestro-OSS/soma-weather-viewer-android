@@ -1,6 +1,5 @@
 package org.soma.weatherviewer.common.domain.model
 
-import android.text.format.DateUtils
 
 data class WeatherModel(
     val id: Long,
@@ -58,6 +57,6 @@ data class WeatherModel(
 
 
     companion object {
-        fun dummy() = WeatherModel(0,"","","","",0f,0f,0f,0)
+        fun dummy() = WeatherModel(0,"","","","","","",0f,0f,0f,0)
     }
 }
