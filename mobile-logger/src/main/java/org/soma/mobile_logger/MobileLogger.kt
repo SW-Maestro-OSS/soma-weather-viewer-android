@@ -12,6 +12,13 @@ object MobileLogger {
         MobileLogger.data = data
     }
 
+    /**
+     * 사용법은 다음과 같습니다.
+     * ```
+     * val jsonString = LoggingScheme.makeJsonString("ClickPlay")
+     * sendClickLogging(jsonString)
+     * ```
+     */
     fun sendClickLogging(jsonString: String) {
         // TODO: Retrofit2
     }
