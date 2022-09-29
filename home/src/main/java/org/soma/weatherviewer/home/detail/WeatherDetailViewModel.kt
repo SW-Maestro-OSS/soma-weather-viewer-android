@@ -21,7 +21,7 @@ class WeatherDetailInfoViewModel(
     fun getWeatherApi() {
         viewModelScope.launch {
             val data = weatherUseCase.getFiveDaysWeather(37f, 127f)
-            _weather.value = data[viewPagerIndex*8]
+            _weather.value = data[viewPagerIndex]
         }
     }
 }
