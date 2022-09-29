@@ -9,7 +9,7 @@ object DataTranslator {
     fun List<Weather>.toWeatherModelList(): List<WeatherModel> {
         val weatherList = mutableListOf<WeatherModel>()
         this.forEach { data ->
-            if(getDateHour(data.dt_txt) == "12") {
+            if (getDateHour(data.dt_txt) == "12") {
                 weatherList.add(
                     WeatherModel(
                         data.weather[0].id,
