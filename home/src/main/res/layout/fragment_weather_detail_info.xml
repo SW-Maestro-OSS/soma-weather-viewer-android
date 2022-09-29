@@ -39,7 +39,7 @@
                 android:id="@+id/text_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.weather.description}"
+                app:textByResId="@{viewModel.weather.main.resId}"
                 app:layout_constraintTop_toBottomOf="@id/image_description_icon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
