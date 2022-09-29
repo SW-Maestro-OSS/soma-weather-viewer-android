@@ -1,9 +1,11 @@
 package org.soma.weatherviewer.common.domain.model
 
+import androidx.annotation.StringRes
+
 
 data class WeatherModel(
     val id: Long,
-    val main: String,
+    val main: WeatherDescription,
     val year: String,
     val month: String,
     val day: String,
@@ -57,6 +59,6 @@ data class WeatherModel(
 
 
     companion object {
-        fun dummy() = WeatherModel(0,"","","","","","",0f,0f,0f,0)
+        fun dummy() = WeatherModel(0, WeatherDescription.NULL,"","","","", "",0f,0f,0f,0)
     }
 }

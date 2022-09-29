@@ -1,5 +1,7 @@
 package org.soma.weatherviewer.common.util
 
+import android.content.Context
+import android.util.Log
 import org.soma.weatherviewer.common.domain.model.WeatherModel
 import org.soma.weatherviewer.common.model.entity.Weather
 
@@ -7,7 +9,7 @@ object DataTranslator {
     fun List<Weather>.toWeatherModelList(): List<WeatherModel> {
         val weatherList = mutableListOf<WeatherModel>()
         this.forEach { data ->
-            if(getDateHour(data.dt_txt) == "12"){
+            if (getDateHour(data.dt_txt) == "12") {
                 weatherList.add(
                     WeatherModel(
                         data.weather[0].id,
