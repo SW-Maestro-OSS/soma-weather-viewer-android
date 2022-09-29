@@ -41,6 +41,7 @@ dependencies {
     api("com.squareup.okhttp3:logging-interceptor")
     api "com.squareup.retrofit2:retrofit:2.9.0"
     api "com.squareup.retrofit2:converter-gson:2.9.0"
+    api project(path: ':mobile-logger')
 
     // test
     testImplementation 'junit:junit:4.+'
