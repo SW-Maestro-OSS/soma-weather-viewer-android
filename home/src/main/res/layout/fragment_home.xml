@@ -22,10 +22,14 @@
             app:title="@string/home_fragment_title"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_shows_5_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:background="@drawable/button_selector"
+            style="@style/SomaBtnTxtStyle"
             android:text="@string/show_five_days_button"
             android:onClick="@{() -> listener.onClick5DaysButton()}"
             app:layout_constraintTop_toBottomOf="@id/custom_action_bar"
