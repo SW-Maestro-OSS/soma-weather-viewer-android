@@ -1,8 +1,5 @@
 package org.soma.weatherviewer.common.domain.model
 
-import androidx.annotation.StringRes
-
-
 data class WeatherModel(
     val id: Long,
     val main: WeatherDescription,
