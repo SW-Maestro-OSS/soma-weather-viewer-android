@@ -1,6 +1,6 @@
 package org.soma.weatherviewer.common.util
 
-enum class TempType(string: String) {
+enum class TempType(name: String) {
     Fahrenheit("Fahrenheit"),
     Celsius("Celsius")
 }
