@@ -11,8 +11,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp">
+        android:background="@drawable/bg_weather"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="5dp">
 
         <TextView
             android:id="@+id/text_date"
@@ -31,10 +32,11 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             photoUrl="@{weather.iconUrl}"
+            android:scaleType="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/text_date"
-            app:layout_constraintEnd_toStartOf="@id/text_description"
+            app:layout_constraintLeft_toRightOf="@id/text_date"
+            app:layout_constraintRight_toLeftOf="@id/text_temp"
             />
 
         <TextView
@@ -42,10 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{weather.description}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image_icon"
-            app:layout_constraintEnd_toStartOf="@id/text_temp"
+            app:layout_constraintTop_toBottomOf="@+id/image_icon"
+            app:layout_constraintLeft_toLeftOf="@+id/image_icon"
+            app:layout_constraintRight_toRightOf="@+id/image_icon"
             tools:text="맑음"
             />
 
@@ -53,7 +54,7 @@
             android:id="@+id/text_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/temp(weather.temp)}"
+            android:text="@{@string/list_temp(weather.temp)}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_description"
