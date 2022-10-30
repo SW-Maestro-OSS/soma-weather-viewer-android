@@ -19,7 +19,7 @@ class HomeFragment : Fragment(), HomeFragmentListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = this@HomeFragment
             listener = this@HomeFragment
@@ -45,9 +45,6 @@ class HomeFragment : Fragment(), HomeFragmentListener {
         _binding = null
     }
 
-    companion object {
-
-    }
 }
 
 interface HomeFragmentListener {

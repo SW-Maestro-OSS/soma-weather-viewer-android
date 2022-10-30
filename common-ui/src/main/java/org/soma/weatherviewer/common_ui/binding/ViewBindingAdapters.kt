@@ -15,7 +15,7 @@ fun bindBackButton(view: View, onBackPressed: Boolean) {
     var context = view.context
     // For Hilt
     if (context is ViewComponentManager.FragmentContextWrapper) {
-        context = (context as ContextWrapper).baseContext
+        context = (context as ContextWrapper).applicationContext
     }
     if (onBackPressed && context is OnBackPressedDispatcherOwner) {
         view.setOnClickListener {
