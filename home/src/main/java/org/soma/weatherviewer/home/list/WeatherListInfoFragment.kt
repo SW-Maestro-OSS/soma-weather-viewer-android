@@ -28,8 +28,6 @@ class WeatherListInfoFragment : Fragment() {
             it.adapter = WeatherAdapter()
         }
 
-        viewModel.getWeatherList()
-
         return binding.root
     }
 

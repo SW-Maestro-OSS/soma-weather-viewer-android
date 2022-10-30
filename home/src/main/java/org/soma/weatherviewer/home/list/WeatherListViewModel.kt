@@ -18,7 +18,11 @@ class WeatherListViewModel  @Inject constructor(
     private val _weatherModelList = MutableLiveData<List<WeatherModel>>()
     val weatherModelList : LiveData<List<WeatherModel>> = _weatherModelList
 
-    fun getWeatherList() {
+    init {
+        getWeatherList()
+    }
+
+    private fun getWeatherList() {
         viewModelScope.launch {
             val data = weatherUseCase.getFiveDaysWeather(37f, 127f)
             Log.d("WeatherListViewModel", "getWeatherList(): ${data}")
