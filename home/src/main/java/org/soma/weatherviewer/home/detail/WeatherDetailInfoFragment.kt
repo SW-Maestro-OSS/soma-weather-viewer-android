@@ -28,8 +28,6 @@ class WeatherDetailInfoFragment : Fragment() {
             it.viewModel = viewModel
         }
 
-        viewModel.getWeatherApi()
-
         return binding.root
     }
 

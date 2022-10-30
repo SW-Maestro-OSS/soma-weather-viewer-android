@@ -1,6 +1,7 @@
 package org.soma.weatherviewer.home.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,22 +27,22 @@ class WeatherDetailFragment : Fragment(){
             it.viewModel = viewModel
         }
 
+
         binding.weatherDetailViewpager.apply {
             adapter = WeatherDetailAdapter(this@WeatherDetailFragment)
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
         }
 
-        initObservers()
-        viewModel.getWeatherApi()
+//        initObservers()
 
         return binding.root
     }
 
-    private fun initObservers(){
-        viewModel.weatherList.observe(viewLifecycleOwner) {
-
-        }
-    }
+//    private fun initObservers(){
+//        viewModel.weatherList.observe(viewLifecycleOwner) {
+//
+//        }
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

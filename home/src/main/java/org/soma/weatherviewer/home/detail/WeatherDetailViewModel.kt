@@ -15,6 +15,10 @@ class WeatherDetailInfoViewModel(
     private var _weather = MutableStateFlow(WeatherModel.dummy())
     val weather: StateFlow<WeatherModel> get() = _weather
 
+    init {
+        getWeatherApi()
+    }
+
     fun getWeatherApi() {
         viewModelScope.launch {
             val data = weatherUseCase.getFiveDaysWeather(37f, 127f)

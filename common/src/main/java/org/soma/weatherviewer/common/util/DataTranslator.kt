@@ -17,8 +17,8 @@ object DataTranslator {
                     data.weather[0].description,
                     "http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png",
                     data.main.temp,
-                    data.main.tempMax,
-                    data.main.tempMin,
+                    data.main.temp_max,
+                    data.main.temp_min,
                     data.main.humidity
                 )
             )

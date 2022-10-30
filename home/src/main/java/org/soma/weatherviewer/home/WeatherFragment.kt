@@ -22,13 +22,13 @@ class WeatherFragment : Fragment(), WeatherFragmentListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentWeatherBinding.inflate(inflater, container, false).also {
             it.lifecycleOwner = this
             it.viewModel = viewModel
             it.listener = this
         }
-        viewModel.getWeatherApi()
+
         subscribeUi()
 
         return binding.root

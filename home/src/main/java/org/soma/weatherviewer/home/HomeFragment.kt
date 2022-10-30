@@ -1,6 +1,7 @@
 package org.soma.weatherviewer.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import org.soma.weatherviewer.common.MainActivityUtil
 import org.soma.weatherviewer.home.databinding.FragmentHomeBinding
+import org.soma.weatherviewer.home.detail.WeatherDetailFragment
 import org.soma.weatherviewer.home.detail.WeatherDetailInfoFragment
 
 @AndroidEntryPoint
@@ -26,7 +28,7 @@ class HomeFragment : Fragment(), HomeFragmentListener {
         }
 
         childFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, WeatherDetailInfoFragment())
+            .replace(R.id.fragment_container, WeatherDetailFragment())
             .commit()
 
         return binding.root
