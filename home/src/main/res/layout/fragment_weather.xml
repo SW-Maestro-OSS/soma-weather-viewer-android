@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/custom_action_bar"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="25dp"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
