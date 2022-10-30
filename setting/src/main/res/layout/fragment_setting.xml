@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
+        android:background="@color/background_color"
         tools:context=".SettingFragment">
 
         <org.soma.weatherviewer.common_ui.CustomActionBar
