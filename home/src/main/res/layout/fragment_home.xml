@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingHorizontal="25dp"
+        android:background="@color/background_color"
         tools:context=".HomeFragment">
 
         <TextView
