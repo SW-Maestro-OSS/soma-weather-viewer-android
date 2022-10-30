@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -9,95 +9,94 @@
             type="org.soma.weatherviewer.common.domain.model.WeatherModel" />
     </data>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_weather"
+        android:paddingVertical="80dp"
+        tools:context=".detail.WeatherDetailInfoFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/text_date"
+            style="@style/SomaDateStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="80dp"
-            android:background="@drawable/bg_weather"
-            tools:context=".detail.WeatherDetailInfoFragment">
-            <TextView
-                android:id="@+id/text_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                style="@style/SomaDateStyle"
-                android:text="@{@string/date_format_y_m_d(weather.year, weather.month, weather.day)}"
-                tools:text="2022년 9월 5일(월)" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2022년 9월 5일(월)" />
 
-            <ImageView
-                android:id="@+id/image_description_icon"
-                android:layout_marginTop="20dp"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="fitCenter"
-                photoUrl="@{weather.iconUrl}"
-                app:layout_constraintTop_toBottomOf="@id/text_date"
-                app:layout_constraintBottom_toTopOf="@id/text_description"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+        <ImageView
+            android:id="@+id/image_description_icon"
+            photoUrl="@{weather.iconUrl}"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@id/text_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_date" />
 
-            <TextView
-                android:id="@+id/text_description"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/SomaDescriptionStyle"
-                app:textByResId="@{weather.main.resId}"
-                app:layout_constraintTop_toBottomOf="@id/image_description_icon"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="많은 비" />
+        <TextView
+            android:id="@+id/text_description"
+            style="@style/SomaDescriptionStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_description_icon"
+            app:textByResId="@{weather.main.resId}"
+            tools:text="많은 비" />
 
-            <TextView
-                android:id="@+id/text_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                style="@style/SomaSubStyle"
-                android:text="@{@string/temp(weather.temp)}"
-                app:layout_constraintTop_toBottomOf="@id/text_description"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="현재 온도 : 29°C" />
+        <TextView
+            android:id="@+id/text_temp"
+            style="@style/SomaSubStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@{@string/temp(weather.temp)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_description"
+            tools:text="현재 온도 : 29°C" />
 
-            <TextView
-                android:id="@+id/text_temp_max"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/SomaSubStyle"
-                android:text="@{@string/temp_max(weather.tempMax)}"
-                app:layout_constraintTop_toBottomOf="@id/text_temp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="최고 온도 : 29°C" />
+        <TextView
+            android:id="@+id/text_temp_max"
+            style="@style/SomaSubStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{@string/temp_max(weather.tempMax)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_temp"
+            tools:text="최고 온도 : 29°C" />
 
-            <TextView
-                android:id="@+id/text_temp_min"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/SomaSubStyle"
-                android:text="@{@string/temp_min(weather.tempMin)}"
-                app:layout_constraintTop_toBottomOf="@id/text_temp_max"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="최저 온도 : 29°C" />
+        <TextView
+            android:id="@+id/text_temp_min"
+            style="@style/SomaSubStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{@string/temp_min(weather.tempMin)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_temp_max"
+            tools:text="최저 온도 : 29°C" />
 
-            <TextView
-                android:id="@+id/text_humidity"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/SomaSubStyle"
-                android:text="@{@string/humidity(weather.humidity)}"
-                app:layout_constraintTop_toBottomOf="@id/text_temp_min"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="습도 : 69%" />
+        <TextView
+            android:id="@+id/text_humidity"
+            style="@style/SomaSubStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{@string/humidity(weather.humidity)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_temp_min"
+            tools:text="습도 : 69%" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

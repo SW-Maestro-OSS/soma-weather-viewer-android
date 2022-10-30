@@ -25,7 +25,6 @@ class WeatherListViewModel  @Inject constructor(
     private fun getWeatherList() {
         viewModelScope.launch {
             val data = weatherUseCase.getFiveDaysWeather(37f, 127f)
-            Log.d("WeatherListViewModel", "getWeatherList(): ${data}")
             _weatherModelList.postValue(data)
         }
     }

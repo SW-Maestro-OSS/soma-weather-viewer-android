@@ -38,7 +38,9 @@ class WeatherDetailFragment : Fragment(){
 
                 if (it.isNotEmpty()) {
                     binding.weatherDetailViewpager.apply {
-                        adapter = WeatherDetailAdapter(this@WeatherDetailFragment, detailSize, it)
+                        adapter = WeatherDetailAdapter(this@WeatherDetailFragment, detailSize, it).apply {
+                            addItemDecoration(DetailInfoItemDecoration())
+                        }
                         orientation = ViewPager2.ORIENTATION_HORIZONTAL
                     }
                 }

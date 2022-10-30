@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="temp">현재 온도 : %.0f°C</string>
+    <string name="temp_max">최고 온도 : %.0f°C</string>
+    <string name="temp_min">최저 온도 : %.0f°C</string>
+    <string name="humidity">습도 : %d%%</string>
+    <string name="date_format_y_m_d">%s년 %s월 %s일</string>
+    <string name="date_format_m_d">%s월 %s일</string>
+    <string name="list_temp">온도 : %.0f°C</string>
+</resources>
