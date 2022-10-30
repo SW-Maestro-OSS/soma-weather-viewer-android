@@ -7,13 +7,15 @@ object DataTranslator {
     fun List<Weather>.toWeatherModelList(): List<WeatherModel> {
         val weatherList = mutableListOf<WeatherModel>()
         this.forEach { data ->
+            val dateData = data.dt_txt.split("-")
+            val day = dateData[2].split(" ")
             weatherList.add(
                 WeatherModel(
                     data.weather[0].id,
                     data.weather[0].main,
-                    getDateYear(data.dt_txt),
-                    getDateMonth(data.dt_txt),
-                    getDateDay(data.dt_txt),
+                    dateData[0],
+                    dateData[1],
+                    day[0],
                     data.weather[0].description,
                     "http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png",
                     data.main.temp,
@@ -25,8 +27,4 @@ object DataTranslator {
         }
         return weatherList.toList()
     }
-
-    private fun getDateYear(datetime: String) = datetime.substring(0,4)
-    private fun getDateMonth(datetime: String) = datetime.substring(6, 7)
-    private fun getDateDay(datetime: String) = datetime.substring(8, 10)
 }
