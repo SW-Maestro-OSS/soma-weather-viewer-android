@@ -27,17 +27,20 @@
     </style>
 
     <style name="SomaDateStyle" parent="@android:style/Widget.TextView">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black_main_color</item>
     </style>
 
     <style name="SomaDescriptionStyle" parent="@android:style/Widget.TextView">
-        <item name="android:textSize">30dp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/black_main_color</item>
     </style>
-
     <style name="SomaSubStyle" parent="@android:style/Widget.TextView">
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/black_main_color</item>
+    </style>
+    <style name="SomaSub2Style" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/black_main_color</item>
     </style>
 </resources>
