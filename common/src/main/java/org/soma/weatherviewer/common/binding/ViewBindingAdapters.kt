@@ -1,10 +1,7 @@
 package org.soma.weatherviewer.common.binding
 
-import android.util.Log
-import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide

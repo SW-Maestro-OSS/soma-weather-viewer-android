@@ -1,10 +1,10 @@
 package org.soma.weatherviewer.home.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import org.soma.weatherviewer.common.HasAppContainer
 import org.soma.weatherviewer.home.databinding.FragmentWeatherDetailInfoBinding
 

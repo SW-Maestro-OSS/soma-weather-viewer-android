@@ -1,6 +1,5 @@
 package org.soma.weatherviewer.common.domain.model
 
-
 data class WeatherModel(
     val id: Long,
     val main: String,

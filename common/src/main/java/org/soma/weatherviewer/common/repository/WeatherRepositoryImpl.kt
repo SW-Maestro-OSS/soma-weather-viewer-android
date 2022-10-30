@@ -1,7 +1,5 @@
 package org.soma.weatherviewer.common.repository
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import org.soma.weatherviewer.common.model.dto.WeatherResponse
 import org.soma.weatherviewer.common.network.WeatherService
 import org.soma.weatherviewer.common.util.WEATHER_KEY

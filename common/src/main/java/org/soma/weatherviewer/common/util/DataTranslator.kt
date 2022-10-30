@@ -26,7 +26,7 @@ object DataTranslator {
         return weatherList.toList()
     }
 
-    fun getDateYear(datetime: String) = datetime.substring(0,4)
-    fun getDateMonth(datetime: String) = datetime.substring(6, 7)
-    fun getDateDay(datetime: String) = datetime.substring(8, 10)
+    private fun getDateYear(datetime: String) = datetime.substring(0,4)
+    private fun getDateMonth(datetime: String) = datetime.substring(6, 7)
+    private fun getDateDay(datetime: String) = datetime.substring(8, 10)
 }

@@ -9,7 +9,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.soma.weatherviewer.common.domain.model.WeatherModel
 import org.soma.weatherviewer.common.domain.usecase.WeatherUseCase
-import org.soma.weatherviewer.common.model.entity.Weather
 import javax.inject.Inject
 
 @HiltViewModel
