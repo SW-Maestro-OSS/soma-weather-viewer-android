@@ -3,11 +3,12 @@
     <string name="temp">현재 온도 : %.0f°C</string>
     <string name="temp_max">최고 온도 : %.0f°C</string>
     <string name="temp_min">최저 온도 : %.0f°C</string>
-    <string name="humidity">습도 : %d°C</string>
+    <string name="humidity">습도 : %d%%</string>
     <string name="weather_list">List</string>
     <string name="weather_detail">Detail</string>
     <string name="date_format_y_m_d">%s년 %s월 %s일</string>
     <string name="date_format_m_d">%s월 %s일</string>
-<!--    <string name="date_format">MM월 dd일</string>-->
+
+    <string name="list_temp">온도 : %.0f°C</string>
 </resources>
 

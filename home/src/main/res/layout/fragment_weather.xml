@@ -15,33 +15,37 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
+        android:paddingHorizontal="25dp"
+        android:background="@color/background_color"
         tools:context=".ui.WeatherListFragment">
 
         <org.soma.weatherviewer.common_ui.CustomActionBar
             android:id="@+id/custom_action_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:hasBackButton="true"/>
-
-        <TextView
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.viewStatus == 0? @string/weather_list: @string/weather_detail}"
-            android:clickable="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:hasBackButton="true"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/SomaBtnTxtStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
             android:onClick="@{() -> listener.onClickSwitchButton()}"
-            app:layout_constraintTop_toTopOf="@id/custom_action_bar"
+            android:text="@{viewModel.viewStatus == 0? @string/weather_list: @string/weather_detail}"
             app:layout_constraintBottom_toBottomOf="@id/custom_action_bar"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="@dimen/margin_custom_action_bar"
-            tools:text="List"/>
+            app:layout_constraintTop_toTopOf="@id/custom_action_bar"
+            tools:text="List" />
 
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/custom_action_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
