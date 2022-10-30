@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="temp_option_title">온도 표현 방식</string>
+    <string name="temp_option_fahrenheit">화씨</string>
+    <string name="temp_option_celsius">섭씨</string>
+    <string name="home_option_title">Home 화면 콘텐츠</string>
+    <string name="home_option_current">현재날씨</string>
+    <string name="home_option_5days">5일치 날씨</string>
+</resources>

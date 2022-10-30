@@ -22,7 +22,6 @@
             android:layout_width="0dp"
             app:layout_constraintHorizontal_weight="1"
             android:gravity="center"
-            android:text="@{@string/date_format_m_d(weather.month, weather.day)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/image_icon"
             app:layout_constraintHorizontal_bias="0.5"

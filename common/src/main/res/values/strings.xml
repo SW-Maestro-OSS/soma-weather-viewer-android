@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">soma-weather-viewer-android</string>
-    <string name="rain">비</string>
-    <string name="thunderstorm">뇌우</string>
-    <string name="snow">눈</string>
-    <string name="mist">습함</string>
-    <string name="drizzle">보슬비</string>
-    <string name="smoke">안개</string>
-    <string name="haze">실안개</string>
-    <string name="dust">먼지</string>
-    <string name="fog">짙은 안개</string>
-    <string name="sand">모래</string>
-    <string name="ash">재</string>
-    <string name="squall">돌풍</string>
-    <string name="tornado">토네이도</string>
-    <string name="clear">맑음</string>
-    <string name="clouds">구름</string>
+    <string name="rain">rain</string>
+    <string name="thunderstorm">thunderstorm</string>
+    <string name="snow">snow</string>
+    <string name="mist">mist</string>
+    <string name="drizzle">drizzle</string>
+    <string name="smoke">smoke</string>
+    <string name="haze">haze</string>
+    <string name="dust">dust</string>
+    <string name="fog">fog</string>
+    <string name="sand">sand</string>
+    <string name="ash">ash</string>
+    <string name="squall">squall</string>
+    <string name="tornado">tornado</string>
+    <string name="clear">clear</string>
+    <string name="clouds">clouds</string>
+    <string name="clear_sky">clear_sky</string>
+    <string name="few_clouds">few_clouds</string>
+    <string name="scattered_clouds">scattered_clouds</string>
+    <string name="broken_clouds">broken_clouds</string>
+    <string name="shower_rain">shower_rain</string>
 </resources>
