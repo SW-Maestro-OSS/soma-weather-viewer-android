@@ -42,6 +42,6 @@
     </style>
     <style name="SomaSub2Style" parent="@android:style/Widget.TextView">
         <item name="android:textSize">10sp</item>
-        <item name="android:textColor">@color/black_main_color</item>
+        <item name="android:textColor">@color/blue_main_color</item>
     </style>
 </resources>
