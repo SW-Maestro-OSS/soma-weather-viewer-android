@@ -38,7 +38,7 @@ class HomeFragment : Fragment(), HomeFragmentListener {
             listener = this@HomeFragment
         }
 
-//        subscribeUi()
+        //subscribeUi()
 
         return binding.root
     }
@@ -63,6 +63,11 @@ class HomeFragment : Fragment(), HomeFragmentListener {
 
         lifecycleScope.launchWhenStarted {
             viewModel.homeScreenOptionType.collectLatest {
+                val fragment = when (it) {
+                    HomeScreenOptionType.Current.name -> WeatherDetailFragment()
+                    else -> WeatherListInfoFragment()
+                }
+
                 val detailSize = if (it == HomeScreenOptionType.Current.name) 1 else 5
 
                 val bundle = Bundle().apply {
@@ -70,7 +75,7 @@ class HomeFragment : Fragment(), HomeFragmentListener {
                 }
 
                 childFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, WeatherDetailFragment().apply {
+                    .replace(R.id.fragment_container, fragment.apply {
                         arguments = bundle
                     }).commit()
             }
