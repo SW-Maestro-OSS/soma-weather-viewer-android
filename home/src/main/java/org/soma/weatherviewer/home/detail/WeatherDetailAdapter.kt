@@ -8,5 +8,5 @@ class WeatherDetailAdapter(fragment: Fragment, private val size: Int, private va
 
     override fun getItemCount(): Int = size
 
-    override fun createFragment(position: Int): Fragment = WeatherDetailInfoFragment.newInstance(weatherList[position*8])
+    override fun createFragment(position: Int): Fragment = WeatherDetailInfoFragment.newInstance(weatherList[position])
 }
