@@ -53,14 +53,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> listener.onClickCelsiusButton()}"
-                android:text="@string/temp_option_fahrenheit" />
+                android:text="@string/temp_option_celsius" />
 
             <RadioButton
                 android:id="@+id/temp_option_fahrenheit_rb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> listener.onClickFahrenheitButton()}"
-                android:text="@string/temp_option_celsius" />
+                android:text="@string/temp_option_fahrenheit" />
         </RadioGroup>
 
         <TextView
