@@ -7,4 +7,6 @@
     <string name="date_format_y_m_d">%s년 %s월 %s일</string>
     <string name="date_format_m_d">%s월 %s일</string>
     <string name="list_temp">온도 : %.0f°C</string>
+    <string name="weather_detail">세부 정보</string>
+    <string name="weather_list">리스트</string>
 </resources>

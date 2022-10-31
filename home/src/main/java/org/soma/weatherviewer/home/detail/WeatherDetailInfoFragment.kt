@@ -27,7 +27,7 @@ class WeatherDetailInfoFragment : Fragment() {
     ): View {
         weatherModel = WeatherModel(
             arguments?.getLong(ID_KEY) ?: 0L,
-            WeatherDescription.NULL,
+            WeatherDescription.valueOf(arguments?.getString(MAIN_KEY) ?: "NULL"),
             arguments?.getString(YEAR_KEY) ?: "",
             arguments?.getString(MONTH_KEY) ?: "",
             arguments?.getString(DAY_KEY) ?: "",
@@ -71,7 +71,7 @@ class WeatherDetailInfoFragment : Fragment() {
 
     companion object {
         private const val ID_KEY = "ID_KEY"
-        private const val MAIN_RES_ID_KEY = "MAIN_RES_ID_KEY"
+        private const val MAIN_KEY = "MAIN_KEY"
         private const val YEAR_KEY = "YEAR_KEY"
         private const val MONTH_KEY = "MONTH_KEY"
         private const val DAY_KEY = "DAY_KEY"
@@ -87,7 +87,7 @@ class WeatherDetailInfoFragment : Fragment() {
             val fragment = WeatherDetailInfoFragment()
             val bundle = Bundle()
             bundle.putLong(ID_KEY, weatherModel.id)
-            bundle.putInt(MAIN_RES_ID_KEY, weatherModel.main.resId ?: 0)
+            bundle.putString(MAIN_KEY, weatherModel.main.name)
             bundle.putString(YEAR_KEY, weatherModel.year)
             bundle.putString(MONTH_KEY, weatherModel.month)
             bundle.putString(DAY_KEY, weatherModel.day)

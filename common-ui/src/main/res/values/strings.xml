@@ -4,8 +4,8 @@
     <string name="temp_max">Highest Temp : %.0f°C</string>
     <string name="temp_min">Lowest Temp : %.0f°C</string>
     <string name="humidity">Humidity: %d%%</string>
-    <string name="weather_list" translatable="false">List</string>
-    <string name="weather_detail" translatable="false">Detail</string>
+    <string name="weather_list">List</string>
+    <string name="weather_detail">Detail</string>
     <string name="date_format_y_m_d">%s %s, %s</string>
     <string name="date_format_m_d">%s %s</string>
 
