@@ -1,2 +1,0 @@
-org/soma/weatherviewer/soma_foundation/BuildConfig.java
- org.soma.weatherviewer.soma_foundation.BuildConfig

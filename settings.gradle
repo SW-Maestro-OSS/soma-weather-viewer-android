@@ -1,16 +1,22 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "soma-weather-viewer-android"
+rootProject.name = "SomaWeatherViewer"
 include ':app'
-include ':common-ui'
-include ':foundation'
-include ':home'
-include ':setting'
-include ':common'
-include ':mobile-logger'
+include ':feature:home'
+include ':feature:forecast'
+include ':feature:search'
+include ':core:data'
+include ':core:domain'
+include ':core:common-ui'
