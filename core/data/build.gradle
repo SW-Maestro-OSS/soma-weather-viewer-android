@@ -5,6 +5,10 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
+// Properties 객체 생성
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'org.soma.weatherviewer.data'
     compileSdk 33
@@ -15,6 +19,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "API_KEY", properties["WEATHER_API_KEY"]
     }
 
     buildTypes {
@@ -33,11 +39,17 @@ android {
 }
 
 dependencies {
-
+    implementation project(path: ':core:network')
     implementation project(path: ':core:domain')
 
     // Network
     implementation "com.github.skydoves:sandwich:$sandwich_version"
+
+    // Json Parser
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
