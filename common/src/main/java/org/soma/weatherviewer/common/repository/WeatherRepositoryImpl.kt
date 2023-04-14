@@ -1,8 +1,8 @@
 package org.soma.weatherviewer.common.repository
 
+import org.soma.weatherviewer.common.BuildConfig
 import org.soma.weatherviewer.common.model.dto.WeatherResponse
 import org.soma.weatherviewer.common.network.WeatherService
-import org.soma.weatherviewer.common.util.WEATHER_KEY
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
@@ -10,7 +10,7 @@ class WeatherRepositoryImpl @Inject constructor(
 ) : WeatherRepository {
 
     override suspend fun getFiveDaysWeather(lat: Float, lon: Float): WeatherResponse {
-        return weatherService.getFiveDaysWeather(lat, lon, WEATHER_KEY)
+        return weatherService.getFiveDaysWeather(lat, lon, BuildConfig.API_KEY)
     }
 
 }
