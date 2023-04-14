@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -33,6 +35,13 @@ android {
 dependencies {
 
     implementation project(path: ':core:domain')
+
+    // Network
+    implementation "com.github.skydoves:sandwich:$sandwich_version"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     // Test
     testImplementation "junit:junit:$junit_version"
