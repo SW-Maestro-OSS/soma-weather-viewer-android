@@ -6,6 +6,7 @@ buildscript {
         androidx_appcompat_version = "1.6.1"
         material_version = "1.8.0"
         constraintlayout_version = "2.1.4"
+        navigation_version = "2.5.3"
 
         // Network
         retrofit_version = "2.9.0"
