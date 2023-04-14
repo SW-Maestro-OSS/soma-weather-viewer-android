@@ -1,5 +1,8 @@
 package org.soma.weatherviewer.common.domain.usecase
 
+import android.content.Context
+import android.util.Log
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.first
 import org.soma.weatherviewer.common.domain.model.WeatherModel
 import org.soma.weatherviewer.common.repository.WeatherRepository

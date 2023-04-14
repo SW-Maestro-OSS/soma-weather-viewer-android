@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+deploymentTargetDropDown.xml
+misc.xml
+git_toolbox_prj.xml
+./misc.xml
+/misc.xml
+/gradle.xml
+gradle.xml
+./gradle.xml

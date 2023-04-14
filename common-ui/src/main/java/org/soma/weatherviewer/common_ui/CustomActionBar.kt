@@ -7,6 +7,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.findNavController
 import org.soma.weatherviewer.common_ui.databinding.LayoutCustomActionBarBinding
 
 
@@ -25,6 +26,10 @@ class CustomActionBar @JvmOverloads constructor(
 
     private fun initializeView(context: Context?) {
         binding = LayoutCustomActionBarBinding.inflate(LayoutInflater.from(context), this, true)
+
+        binding.imageBackbutton.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun getAttrs(attrs: AttributeSet?) {

@@ -1,14 +1,16 @@
 package org.soma.weatherviewer.home.list
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import org.soma.weatherviewer.home.WeatherAdapter
 import org.soma.weatherviewer.home.databinding.FragmentWeatherListInfoBinding
 
+@AndroidEntryPoint
 class WeatherListInfoFragment : Fragment() {
 
     private var _binding: FragmentWeatherListInfoBinding? = null
@@ -19,7 +21,7 @@ class WeatherListInfoFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentWeatherListInfoBinding.inflate(inflater, container, false).also {
             it.lifecycleOwner = this
             it.viewModel = viewModel

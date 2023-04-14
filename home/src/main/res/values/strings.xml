@@ -1,4 +1,4 @@
 <resources>
-    <string name="home_fragment_title">Soma Weather Viewer</string>
+    <string name="home_fragment_title" translatable="false">Soma Weather Viewer</string>
     <string name="show_five_days_button">Show 5 Days</string>
 </resources>
