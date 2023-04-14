@@ -1,7 +1,13 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
+
+// Properties 객체 생성
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
     namespace 'org.soma.weatherviewer.data'
@@ -13,6 +19,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "API_KEY", properties["WEATHER_API_KEY"]
     }
 
     buildTypes {
@@ -31,8 +39,24 @@ android {
 }
 
 dependencies {
-
     implementation project(path: ':core:domain')
+
+    // Network
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    implementation "com.github.skydoves:sandwich:$sandwich_version"
+
+    // Json Parser
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     // Test
     testImplementation "junit:junit:$junit_version"

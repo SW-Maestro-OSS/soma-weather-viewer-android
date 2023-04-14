@@ -1,6 +1,8 @@
 plugins {
     id "com.android.application"
     id "org.jetbrains.kotlin.android"
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -50,6 +52,13 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
     implementation "com.google.android.material:material:$material_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     // Test
     testImplementation "junit:junit:$junit_version"
