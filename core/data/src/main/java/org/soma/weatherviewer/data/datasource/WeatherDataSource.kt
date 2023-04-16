@@ -4,6 +4,8 @@ import com.skydoves.sandwich.ApiResponse
 import org.soma.weatherviewer.data.BuildConfig
 import org.soma.weatherviewer.data.model.response.ForecastResponse
 import org.soma.weatherviewer.data.model.response.WeatherResponse
+import org.soma.weatherviewer.domain.model.WeatherTempUnits
+import org.soma.weatherviewer.domain.model.translateToAPIUnit
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -13,19 +15,22 @@ interface WeatherDataSource {
 	suspend fun getCurrentWeather(
 		@Query("lat") lat: Float,
 		@Query("lon") lon: Float,
-		@Query("appId") appId: String = BuildConfig.API_KEY
+		@Query("appId") appId: String = BuildConfig.API_KEY,
+		@Query("units") units: String = WeatherTempUnits.Celsius.translateToAPIUnit()
 	) : ApiResponse<WeatherResponse>
 
 	@GET("weather")
 	suspend fun getCityWeather(
 		@Query("q") cityName: String,
-		@Query("appId") appId: String = BuildConfig.API_KEY
+		@Query("appId") appId: String = BuildConfig.API_KEY,
+		@Query("units") units: String = WeatherTempUnits.Celsius.translateToAPIUnit()
 	) : ApiResponse<WeatherResponse>
 
 	@GET("forecast")
 	suspend fun getForecast(
 		@Query("lat") lat: Float,
 		@Query("lon") lon: Float,
-		@Query("appId") appId: String = BuildConfig.API_KEY
+		@Query("appId") appId: String = BuildConfig.API_KEY,
+		@Query("units") units: String = WeatherTempUnits.Celsius.translateToAPIUnit()
 	) : ApiResponse<ForecastResponse>
 }
