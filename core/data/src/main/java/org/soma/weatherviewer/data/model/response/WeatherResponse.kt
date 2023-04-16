@@ -6,7 +6,7 @@ import org.soma.weatherviewer.data.model.dto.WeatherMainDto
 
 data class WeatherResponse(
 	@SerializedName("dt")
-	val dateTime: String,
+	val dt: Long,
 
 	@SerializedName("weather")
 	val weatherInfo: List<WeatherInfoDto>,

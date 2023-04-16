@@ -10,5 +10,8 @@ data class WeatherInfoDto(
 	val weatherName: String,
 
 	@SerializedName("description")
-	val description: String
+	val description: String,
+
+	@SerializedName("icon")
+	val icon: String
 )

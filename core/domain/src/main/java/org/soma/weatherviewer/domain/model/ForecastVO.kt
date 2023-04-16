@@ -1,10 +1,12 @@
 package org.soma.weatherviewer.domain.model
 
 data class ForecastVO(
-	val dateTime: String,
+	val dt: Long = 0L,
+	val dateText: String = "",
 
-	val weatherId: Int,
-	val weatherName: String,
-	val description: String,
-	val currentTemp: Float,
+	val weatherId: Int = 500,
+	val weatherName: String = "",
+	val description: String = "",
+	val weatherIcon: String = "",
+	val currentTemp: String = "",
 )
