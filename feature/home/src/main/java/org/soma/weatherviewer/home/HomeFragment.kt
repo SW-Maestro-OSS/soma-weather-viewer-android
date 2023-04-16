@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.soma.weatherviewer.common_ui.ForecastAdapter
 import org.soma.weatherviewer.domain.model.ForecastViewType
-import org.soma.weatherviewer.common_ui.SpaceItemDecoration
+import org.soma.weatherviewer.common_ui.ForecastSpaceItemDecoration
 import org.soma.weatherviewer.home.databinding.FragmentHomeBinding
 
 @AndroidEntryPoint
@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
 		with(binding) {
 			vm = viewModel
 			adapter = ForecastAdapter(ForecastViewType.PORTRAIT)
-			itemDecoration = SpaceItemDecoration(30)
+			itemDecoration = ForecastSpaceItemDecoration(30, ForecastViewType.PORTRAIT)
 		}
 	}
 
