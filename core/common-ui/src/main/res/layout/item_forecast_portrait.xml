@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="org.soma.weatherviewer.domain.model.ForecastVO" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:background="@drawable/bg_weather_card_view_no_shadow"
+        android:minWidth="100dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp">
+
+        <TextView
+            android:id="@+id/item_forecast_portrait_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.dateText}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="06:00" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_forecast_portrait_icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="10dp"
+            android:src="@drawable/ic_launcher_background"
+            app:imageUrl="@{item.weatherIcon}"
+            app:layout_constraintBottom_toTopOf="@id/item_forecast_portrait_temp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_forecast_portrait_time" />
+
+        <TextView
+            android:id="@+id/item_forecast_portrait_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.currentTemp}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="24℃" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
