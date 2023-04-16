@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="vm"
+            type="org.soma.weatherviewer.forecast.ForecastViewModel" />
+
+        <variable
+            name="adapter"
+            type="org.soma.weatherviewer.common_ui.ForecastAdapter" />
+
+        <variable
+            name="itemDecoration"
+            type="androidx.recyclerview.widget.RecyclerView.ItemDecoration" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ForecastFragment"
         android:background="@drawable/bg_gradient"
         android:paddingHorizontal="24dp"
-        android:paddingVertical="50dp">
+        android:paddingVertical="40dp"
+        tools:context=".ForecastFragment">
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/forecast_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="ForecastFragment" />
+            android:adapter="@{adapter}"
+            app:forecastItem="@{vm.forecastListFlow}"
+            app:itemDecoration="@{itemDecoration}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>
