@@ -13,6 +13,9 @@ buildscript {
         okhttp_version = "4.10.0"
         sandwich_version = "1.3.4"
 
+        // ImageLoader
+        glide_version = "4.15.1"
+
         // Dependency Injection
         hilt_version = "2.44"
 
