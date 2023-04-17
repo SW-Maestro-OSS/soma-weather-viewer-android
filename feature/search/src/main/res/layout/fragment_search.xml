@@ -1,19 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="org.soma.weatherviewer.search.SearchViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="50dp"
+        android:fitsSystemWindows="true"
+        android:paddingVertical="60dp"
         tools:context=".SearchFragment">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="SearchFragment" />
+        <LinearLayout
+            android:id="@+id/search_title_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="4dp"
+            android:layout_marginHorizontal="22.5dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_top_text_area"
+            app:layout_constraintEnd_toEndOf="@id/search_weather_cv"
+            app:layout_constraintStart_toStartOf="@id/search_weather_cv"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="7dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{vm.cityNameFlow}"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:text="Seoul"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/search_input_area"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="22.5dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_search_edit_area"
+            android:gravity="center_vertical"
+            android:hint="도시 이름을 검색해 보세요"
+            android:maxLines="1"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="2dp"
+            app:layout_constraintEnd_toEndOf="@id/search_weather_cv"
+            app:layout_constraintStart_toStartOf="@id/search_weather_cv"
+            app:layout_constraintTop_toBottomOf="@id/search_title_layout" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/searhc_weather_cv_top_gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/search_weather_cv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_weather_card_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searhc_weather_cv_top_gl">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/search_date_gl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.15" />
+
+            <TextView
+                android:id="@+id/search_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.searchCityWeatherFlow.dateTime}"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/search_date_gl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="April 3 (Mon) 14" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/search_weather_icon_top_gl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/search_weather_icon_start_gl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/search_weather_icon_end_gl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/search_weather_icon_btm_gl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:imageUrl="@{vm.searchCityWeatherFlow.weatherIcon}"
+                app:layout_constraintBottom_toTopOf="@id/search_weather_icon_btm_gl"
+                app:layout_constraintEnd_toStartOf="@id/search_weather_icon_end_gl"
+                app:layout_constraintStart_toEndOf="@id/search_weather_icon_start_gl"
+                app:layout_constraintTop_toBottomOf="@id/search_weather_icon_top_gl"
+                app:layout_constraintVertical_bias="0.7"
+                tools:src="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/search_weather_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@{vm.searchCityWeatherFlow.weatherName}"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/search_current_temp_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_weather_icon_btm_gl"
+                tools:text="Clear sky" />
+
+            <LinearLayout
+                android:id="@+id/search_current_temp_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toTopOf="@id/search_highest_temp_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Current"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@{vm.searchCityWeatherFlow.currentTemp}"
+                    android:textColor="@color/black"
+                    tools:text="24 ℃" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/search_highest_temp_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toTopOf="@id/search_lowest_temp_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Highest"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@{vm.searchCityWeatherFlow.maxTemp}"
+                    android:textColor="@color/black"
+                    tools:text="24℃" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/search_lowest_temp_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toTopOf="@id/search_humidity_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lowest"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@{vm.searchCityWeatherFlow.minTemp}"
+                    android:textColor="@color/black"
+                    tools:text="21℃" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/search_humidity_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Humidity"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@{vm.searchCityWeatherFlow.humidity}"
+                    android:textColor="@color/black"
+                    tools:text="14%" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -27,7 +27,7 @@ object UnixTimeTranslator {
 		val dayOfWeek = LocalDate.of(dateData[0].toInt(), dateData[1].toInt(), dateData[2].toInt()).dayOfWeek
 
 		return when (locale) {
-			Locale.KOREA -> "${dateData[1]}월 ${dateData[2]}일 ${dayOfWeek.getDisplayName(TextStyle.FULL, locale)} ${timeData[0]}시"
+			Locale.KOREA -> "${dateData[1]}월 ${dateData[2]}일 (${dayOfWeek.getDisplayName(TextStyle.SHORT, locale)}) ${timeData[0]}시"
 			else -> ""
 		}
 	}
