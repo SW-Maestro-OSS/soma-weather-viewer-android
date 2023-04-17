@@ -5,6 +5,7 @@
     tools:context=".HomeFragment">
 
     <data>
+
         <variable
             name="vm"
             type="org.soma.weatherviewer.home.HomeViewModel" />
@@ -23,7 +24,42 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient"
         android:paddingHorizontal="24dp"
-        android:paddingVertical="50dp">
+        android:paddingVertical="30dp">
+
+        <LinearLayout
+            android:id="@+id/home_title_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="4dp"
+            android:layout_marginHorizontal="22.5dp"
+            android:background="@drawable/bg_top_text_area"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/home_weather_cv"
+            app:layout_constraintEnd_toEndOf="@id/home_weather_cv"
+            app:layout_constraintStart_toStartOf="@id/home_weather_cv">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="7dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/home_city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seoul"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/home_weather_cv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/home_weather_cv_top_gl"
@@ -64,9 +100,9 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/home_date_gl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/home_date_gl"
                 tools:text="April 3 (Mon) 14" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -117,10 +153,10 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/home_weather_icon_btm_gl"
                 app:layout_constraintBottom_toTopOf="@id/home_current_temp_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/home_weather_icon_btm_gl"
                 tools:text="Clear sky" />
 
             <LinearLayout
