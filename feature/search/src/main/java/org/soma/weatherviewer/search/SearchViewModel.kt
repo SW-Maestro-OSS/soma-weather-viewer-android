@@ -27,7 +27,7 @@ class SearchViewModel @Inject constructor(
 
 	fun fetchCityWeather(
 		cityName: String,
-		units: WeatherTempUnits = WeatherTempUnits.Celsius
+		units: WeatherTempUnits = WeatherTempUnits.CELSIUS
 	) {
 		viewModelScope.launch {
 			getCityWeatherUseCase(cityName, units).collectLatest {

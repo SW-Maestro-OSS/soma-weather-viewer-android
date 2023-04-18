@@ -13,7 +13,7 @@ class GetHomeDataUseCase @Inject constructor(
 	operator fun invoke(
 		lat: Float,
 		lon: Float,
-		units: WeatherTempUnits = WeatherTempUnits.Celsius
+		units: WeatherTempUnits = WeatherTempUnits.CELSIUS
 	): Flow<HomeModel> {
 		return combine(
 			weatherRepository.getCurrentWeather(

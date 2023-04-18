@@ -20,7 +20,7 @@ class ForecastViewModel @Inject constructor(
 	val forecastListFlow = getForecastUseCase(
 		lat = lat,
 		lon = lon,
-		units = WeatherTempUnits.Celsius
+		units = WeatherTempUnits.CELSIUS
 	).stateIn(
 		scope = viewModelScope,
 		started = SharingStarted.Eagerly,

@@ -12,7 +12,7 @@ class GetForecastUseCase @Inject constructor(
 	operator fun invoke(
 		lat: Float,
 		lon: Float,
-		units: WeatherTempUnits = WeatherTempUnits.Celsius
+		units: WeatherTempUnits = WeatherTempUnits.CELSIUS
 	) = flow {
 		weatherRepository.getForecast(lat = lat, lon = lon, units = units).collect {
 			emit(it)

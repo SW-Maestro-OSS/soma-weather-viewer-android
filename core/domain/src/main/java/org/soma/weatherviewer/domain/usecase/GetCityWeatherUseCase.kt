@@ -11,7 +11,7 @@ class GetCityWeatherUseCase @Inject constructor(
 ) {
 	operator fun invoke(
 		cityName: String = "seoul",
-		units: WeatherTempUnits = WeatherTempUnits.Celsius
+		units: WeatherTempUnits = WeatherTempUnits.CELSIUS
 	) = flow {
 		weatherRepository.getCityWeather(cityName = cityName, units = units).collect {
 			emit(it)
