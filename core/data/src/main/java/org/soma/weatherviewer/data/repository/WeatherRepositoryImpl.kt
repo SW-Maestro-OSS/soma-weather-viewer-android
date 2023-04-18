@@ -1,8 +1,12 @@
 package org.soma.weatherviewer.data.repository
 
 import com.skydoves.sandwich.suspendOnSuccess
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import org.soma.weatherviewer.data.datasource.WeatherDataSource
+import org.soma.weatherviewer.data.dispatchers.Dispatcher
+import org.soma.weatherviewer.data.dispatchers.WeatherViewerDispatchers
 import org.soma.weatherviewer.data.model.mapper.asDomain
 import org.soma.weatherviewer.domain.model.WeatherTempUnits
 import org.soma.weatherviewer.domain.model.translateToAPIUnit
@@ -10,7 +14,8 @@ import org.soma.weatherviewer.domain.repository.WeatherRepository
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
-	private val weatherDataSource: WeatherDataSource
+	private val weatherDataSource: WeatherDataSource,
+	@Dispatcher(WeatherViewerDispatchers.IO) private val ioDispatcher: CoroutineDispatcher
 ) : WeatherRepository {
 
 	override fun getCurrentWeather(
@@ -22,7 +27,7 @@ class WeatherRepositoryImpl @Inject constructor(
 		response.suspendOnSuccess {
 			emit(data.asDomain())
 		}
-	}
+	}.flowOn(ioDispatcher)
 
 	override fun getCityWeather(
 		cityName: String,
@@ -32,7 +37,7 @@ class WeatherRepositoryImpl @Inject constructor(
 		response.suspendOnSuccess {
 			emit(data.asDomain())
 		}
-	}
+	}.flowOn(ioDispatcher)
 
 	override fun getForecast(
 		lat: Float,
@@ -43,6 +48,6 @@ class WeatherRepositoryImpl @Inject constructor(
 		response.suspendOnSuccess {
 			emit(data.asDomain())
 		}
-	}
+	}.flowOn(ioDispatcher)
 
 }

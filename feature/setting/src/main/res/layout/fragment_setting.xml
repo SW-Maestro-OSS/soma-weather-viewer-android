@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="vm"
+            type="org.soma.weatherviewer.setting.SettingViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,7 +39,6 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/setting_celsius_text"
             app:layout_constraintStart_toStartOf="parent" />
-
 
         <TextView
             android:id="@+id/setting_celsius_text"
@@ -72,11 +77,11 @@
             android:id="@+id/setting_temp_unit_cv"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_marginHorizontal="5dp"
             android:layout_marginTop="30dp"
             android:elevation="10dp"
             android:minHeight="45dp"
             app:cardCornerRadius="20dp"
-            android:layout_marginHorizontal="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -131,6 +136,17 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
+        <ProgressBar
+            android:id="@+id/setting_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/black"
+            android:translationZ="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:show="@{vm.unitTempStoreStatus}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
