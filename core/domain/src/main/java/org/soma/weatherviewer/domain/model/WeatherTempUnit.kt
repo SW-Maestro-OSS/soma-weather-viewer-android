@@ -4,8 +4,8 @@ package org.soma.weatherviewer.domain.model
  * Celsius - metric
  * Fahrenheit - imperial
  */
-enum class WeatherTempUnits(val unit: String) {
+enum class WeatherTempUnit(val unit: String) {
 	NONE("none"), CELSIUS("metric"), FAHRENHEIT("imperial");
 }
 
-fun WeatherTempUnits.translateToAPIUnit(): String = this.unit
+fun WeatherTempUnit.translateToAPIUnit(): String = this.unit

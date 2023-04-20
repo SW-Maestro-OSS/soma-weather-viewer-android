@@ -2,7 +2,7 @@ package org.soma.weatherviewer.domain.usecase
 
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
-import org.soma.weatherviewer.domain.model.WeatherTempUnits
+import org.soma.weatherviewer.domain.model.WeatherTempUnit
 import org.soma.weatherviewer.domain.repository.WeatherRepository
 import javax.inject.Inject
 
@@ -11,7 +11,7 @@ class GetCityWeatherUseCase @Inject constructor(
 ) {
 	operator fun invoke(
 		cityName: String = "seoul",
-		units: WeatherTempUnits = WeatherTempUnits.CELSIUS
+		units: WeatherTempUnit = WeatherTempUnit.CELSIUS
 	) = flow {
 		weatherRepository.getCityWeather(cityName = cityName, units = units).collect {
 			emit(it)

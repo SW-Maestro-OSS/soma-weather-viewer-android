@@ -8,7 +8,7 @@ import org.soma.weatherviewer.data.datasource.WeatherDataSource
 import org.soma.weatherviewer.data.dispatchers.Dispatcher
 import org.soma.weatherviewer.data.dispatchers.WeatherViewerDispatchers
 import org.soma.weatherviewer.data.model.mapper.asDomain
-import org.soma.weatherviewer.domain.model.WeatherTempUnits
+import org.soma.weatherviewer.domain.model.WeatherTempUnit
 import org.soma.weatherviewer.domain.model.translateToAPIUnit
 import org.soma.weatherviewer.domain.repository.WeatherRepository
 import javax.inject.Inject
@@ -21,32 +21,32 @@ class WeatherRepositoryImpl @Inject constructor(
 	override fun getCurrentWeather(
 		lat: Float,
 		lon: Float,
-		units: WeatherTempUnits
+		units: WeatherTempUnit
 	) = flow {
 		val response = weatherDataSource.getCurrentWeather(lat = lat, lon = lon, units = units.translateToAPIUnit())
 		response.suspendOnSuccess {
-			emit(data.asDomain())
+			emit(data.asDomain(units))
 		}
 	}.flowOn(ioDispatcher)
 
 	override fun getCityWeather(
 		cityName: String,
-		units: WeatherTempUnits
+		units: WeatherTempUnit
 	) = flow {
 		val response = weatherDataSource.getCityWeather(cityName = cityName, units = units.translateToAPIUnit())
 		response.suspendOnSuccess {
-			emit(data.asDomain())
+			emit(data.asDomain(units))
 		}
 	}.flowOn(ioDispatcher)
 
 	override fun getForecast(
 		lat: Float,
 		lon: Float,
-		units: WeatherTempUnits
+		units: WeatherTempUnit
 	) = flow {
 		val response = weatherDataSource.getForecast(lat = lat, lon = lon, units = units.translateToAPIUnit())
 		response.suspendOnSuccess {
-			emit(data.asDomain())
+			emit(data.asDomain(units))
 		}
 	}.flowOn(ioDispatcher)
 

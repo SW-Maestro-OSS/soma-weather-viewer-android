@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import org.soma.weatherviewer.domain.datastore.TEMP_UNIT_KEY
 import org.soma.weatherviewer.domain.datastore.WeatherViewerDataStore
-import org.soma.weatherviewer.domain.model.WeatherTempUnits
+import org.soma.weatherviewer.domain.model.WeatherTempUnit
 import javax.inject.Inject
 
 class WeatherViewerDataStoreImpl @Inject constructor(
@@ -20,13 +20,13 @@ class WeatherViewerDataStoreImpl @Inject constructor(
 	/**
 	 * 사용자의 temp unit을 저장합니다.
 	 */
-	private val userTempUnitFlow: Flow<WeatherTempUnits> =
+	private val userTempUnitFlow: Flow<WeatherTempUnit> =
 		dataStore.data.map { pref ->
 			val unitStr = pref[stringPreferencesKey(TEMP_UNIT_KEY)] ?: ""
-			if (unitStr.isEmpty()) WeatherTempUnits.CELSIUS else WeatherTempUnits.valueOf(unitStr.uppercase())
+			if (unitStr.isEmpty()) WeatherTempUnit.CELSIUS else WeatherTempUnit.valueOf(unitStr.uppercase())
 		}
 
-	override suspend fun storeUserTempUnit(unit: WeatherTempUnits) = flow {
+	override suspend fun storeUserTempUnit(unit: WeatherTempUnit) = flow {
 		try {
 			dataStore.edit { pref ->
 				pref[stringPreferencesKey(TEMP_UNIT_KEY)] = unit.name
@@ -37,6 +37,9 @@ class WeatherViewerDataStoreImpl @Inject constructor(
 		}
 	}
 
-	override suspend fun getUserTempUnit(): WeatherTempUnits = userTempUnitFlow.first()
+	override suspend fun getUserTempUnit(): Flow<WeatherTempUnit> = flow {
+		val unit = userTempUnitFlow.first()
+		emit(unit)
+	}
 
 }
