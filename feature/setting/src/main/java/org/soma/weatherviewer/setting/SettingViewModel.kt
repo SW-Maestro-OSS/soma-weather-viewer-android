@@ -7,30 +7,32 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import org.soma.weatherviewer.domain.model.WeatherTempUnits
+import org.soma.weatherviewer.domain.model.WeatherTempUnit
 import org.soma.weatherviewer.domain.usecase.GetUserTempUnitUseCase
 import org.soma.weatherviewer.domain.usecase.StoreUserTempUnitUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class SettingViewModel @Inject constructor(
-	getUserTempUnitUseCase: GetUserTempUnitUseCase,
+	private val getUserTempUnitUseCase: GetUserTempUnitUseCase,
 	private val storeUserTempUnitUseCase: StoreUserTempUnitUseCase
 ) : ViewModel() {
 
 	private val _weatherUnitStoreStatus = MutableStateFlow(false)
 	var unitTempStoreStatus = _weatherUnitStoreStatus.asStateFlow()
 
-	private val _userWeatherUnit = MutableStateFlow(WeatherTempUnits.NONE)
+	private val _userWeatherUnit = MutableStateFlow(WeatherTempUnit.NONE)
 	val userWeatherUnit = _userWeatherUnit.asStateFlow()
 
-	init {
+	fun getUserTempUnit() {
 		viewModelScope.launch {
-			_userWeatherUnit.value = getUserTempUnitUseCase()
+			getUserTempUnitUseCase().collectLatest {
+				_userWeatherUnit.value = it
+			}
 		}
 	}
 
-	fun storeUserTempUnit(unit: WeatherTempUnits) {
+	fun storeUserTempUnit(unit: WeatherTempUnit) {
 		viewModelScope.launch {
 			storeUserTempUnitUseCase(unit).collectLatest { isSuccess ->
 				_weatherUnitStoreStatus.value = isSuccess

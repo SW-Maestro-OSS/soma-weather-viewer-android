@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import org.soma.weatherviewer.domain.model.WeatherTempUnits
+import org.soma.weatherviewer.domain.model.WeatherTempUnit
 import org.soma.weatherviewer.setting.databinding.FragmentSettingBinding
 
 @AndroidEntryPoint
@@ -36,6 +36,11 @@ class SettingFragment : Fragment() {
 		subscribeData()
 	}
 
+	override fun onStart() {
+		super.onStart()
+		viewModel.getUserTempUnit()
+	}
+
 	private fun subscribeData() {
 		lifecycleScope.launchWhenStarted {
 			viewModel.unitTempStoreStatus.collectLatest { isSuccess ->
@@ -48,10 +53,10 @@ class SettingFragment : Fragment() {
 		lifecycleScope.launchWhenStarted {
 			viewModel.userWeatherUnit.collectLatest { unit ->
 				when (unit) {
-					WeatherTempUnits.CELSIUS -> {
+					WeatherTempUnit.CELSIUS -> {
 						initCelsiusArea()
 					}
-					WeatherTempUnits.FAHRENHEIT -> {
+					WeatherTempUnit.FAHRENHEIT -> {
 						initFahrenheitArea()
 					}
 
@@ -67,12 +72,12 @@ class SettingFragment : Fragment() {
 	private fun initUI() {
 		binding.settingCelsiusArea.setOnClickListener {
 			initCelsiusArea()
-			viewModel.storeUserTempUnit(WeatherTempUnits.CELSIUS)
+			viewModel.storeUserTempUnit(WeatherTempUnit.CELSIUS)
 		}
 
 		binding.settingFahrenheitArea.setOnClickListener {
 			initFahrenheitArea()
-			viewModel.storeUserTempUnit(WeatherTempUnits.FAHRENHEIT)
+			viewModel.storeUserTempUnit(WeatherTempUnit.FAHRENHEIT)
 		}
 	}
 

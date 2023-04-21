@@ -36,6 +36,11 @@ class ForecastFragment : Fragment() {
 		}
 	}
 
+	override fun onStart() {
+		super.onStart()
+		viewModel.fetchForecast()
+	}
+
 	override fun onDestroyView() {
 		binding.unbind()
 		super.onDestroyView()

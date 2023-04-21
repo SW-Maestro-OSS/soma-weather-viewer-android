@@ -3,27 +3,32 @@ package org.soma.weatherviewer.forecast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.stateIn
-import org.soma.weatherviewer.domain.model.WeatherTempUnits
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import org.soma.weatherviewer.domain.model.ForecastVO
 import org.soma.weatherviewer.domain.usecase.GetForecastUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class ForecastViewModel @Inject constructor(
-	getForecastUseCase: GetForecastUseCase
+	private val getForecastUseCase: GetForecastUseCase
 ): ViewModel() {
 
 	private val lat: Float = 37.5683f
 	private val lon: Float = 126.9778f
 
-	val forecastListFlow = getForecastUseCase(
-		lat = lat,
-		lon = lon,
-		units = WeatherTempUnits.CELSIUS
-	).stateIn(
-		scope = viewModelScope,
-		started = SharingStarted.Eagerly,
-		initialValue = emptyList()
-	)
+	private val _forecastListFlow = MutableStateFlow<List<ForecastVO>>(emptyList())
+	val forecastListFlow = _forecastListFlow.asStateFlow()
+	fun fetchForecast() {
+		viewModelScope.launch {
+			getForecastUseCase(
+				lat = lat,
+				lon = lon,
+			).collectLatest {
+				_forecastListFlow.value = it
+			}
+		}
+	}
 }
