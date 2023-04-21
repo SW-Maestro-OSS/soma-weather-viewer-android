@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="vm"
             type="org.soma.weatherviewer.search.SearchViewModel" />
@@ -42,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@{vm.cityNameFlow}"
+                android:text="@{vm.searchCityNameFlow}"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 tools:text="Seoul"

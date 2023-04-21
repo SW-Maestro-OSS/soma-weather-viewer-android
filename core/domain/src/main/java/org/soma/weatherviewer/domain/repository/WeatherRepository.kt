@@ -9,7 +9,7 @@ interface WeatherRepository {
 
 	fun getCurrentWeather(lat: Float, lon: Float, units: WeatherTempUnit): Flow<WeatherVO>
 
-	fun getCityWeather(cityName: String, units: WeatherTempUnit): Flow<WeatherVO>
+	fun getCityWeather(cityName: String, units: WeatherTempUnit, onError: (String?) -> Unit): Flow<WeatherVO>
 
 	fun getForecast(lat: Float, lon: Float, units: WeatherTempUnit): Flow<List<ForecastVO>>
 }

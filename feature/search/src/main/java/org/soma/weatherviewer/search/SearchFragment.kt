@@ -8,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import org.soma.weatherviewer.search.databinding.FragmentSearchBinding
 
 @AndroidEntryPoint
@@ -35,7 +38,8 @@ class SearchFragment : Fragment() {
 			vm = viewModel
 
 			/**
-			 * 키보드 엔터 누를 시 [SearchViewModel]의 [cityName]이 수정되고 api를 호출하게 됩니다.
+			 * 키보드 엔터 누를 시 [SearchViewModel]의 [setCityName]에서 API 정보를 불러올 수 있는지 체크합니다.
+			 * 불러올 수 없다면 도시이름 역시 저장되지 않습니다.
  			 */
 			searchInputArea.setOnEditorActionListener(object: TextView.OnEditorActionListener {
 				override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
@@ -50,7 +54,20 @@ class SearchFragment : Fragment() {
 					return false
 				}
 			})
+			
+			lifecycleScope.launchWhenStarted { 
+				viewModel.toastMessage.collectLatest { message ->
+					if (message == null || message.isEmpty()) return@collectLatest
+					Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+					viewModel.clearToastMessage()
+				}
+			}
 		}
+	}
+
+	override fun onStart() {
+		super.onStart()
+		viewModel.fetchCityWeather()
 	}
 
 	override fun onDestroyView() {

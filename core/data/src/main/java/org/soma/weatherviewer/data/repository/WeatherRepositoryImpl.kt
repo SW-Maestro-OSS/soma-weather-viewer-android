@@ -1,5 +1,6 @@
 package org.soma.weatherviewer.data.repository
 
+import com.skydoves.sandwich.onFailure
 import com.skydoves.sandwich.suspendOnSuccess
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
@@ -31,12 +32,13 @@ class WeatherRepositoryImpl @Inject constructor(
 
 	override fun getCityWeather(
 		cityName: String,
-		units: WeatherTempUnit
+		units: WeatherTempUnit,
+		onError: (String?) -> Unit
 	) = flow {
 		val response = weatherDataSource.getCityWeather(cityName = cityName, units = units.translateToAPIUnit())
 		response.suspendOnSuccess {
 			emit(data.asDomain(units))
-		}
+		}.onFailure { onError("올바르지 않은 도시이름 입니다") }
 	}.flowOn(ioDispatcher)
 
 	override fun getForecast(
