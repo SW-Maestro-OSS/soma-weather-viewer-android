@@ -9,4 +9,8 @@ interface WeatherViewerDataStore {
 
 	suspend fun getUserTempUnit(): Flow<WeatherTempUnit>
 
+	suspend fun storeSearchCityName(cityName: String): Flow<Boolean>
+
+	suspend fun getSearchCityName(): Flow<String>
+
 }

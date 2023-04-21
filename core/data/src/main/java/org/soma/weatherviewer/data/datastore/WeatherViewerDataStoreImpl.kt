@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import org.soma.weatherviewer.domain.datastore.SEARCH_CITY_NAME_KEY
 import org.soma.weatherviewer.domain.datastore.TEMP_UNIT_KEY
 import org.soma.weatherviewer.domain.datastore.WeatherViewerDataStore
 import org.soma.weatherviewer.domain.model.WeatherTempUnit
@@ -40,6 +41,30 @@ class WeatherViewerDataStoreImpl @Inject constructor(
 	override suspend fun getUserTempUnit(): Flow<WeatherTempUnit> = flow {
 		val unit = userTempUnitFlow.first()
 		emit(unit)
+	}
+
+	/**
+	 * 사용자의 City을 저장합니다.
+	 */
+	private val searchCityNameFlow: Flow<String> =
+		dataStore.data.map { pref ->
+			val cityName = pref[stringPreferencesKey(SEARCH_CITY_NAME_KEY)] ?: ""
+			cityName.ifEmpty { "seoul" }
+		}
+	override suspend fun storeSearchCityName(cityName: String) = flow {
+		try {
+			dataStore.edit { pref ->
+				pref[stringPreferencesKey(SEARCH_CITY_NAME_KEY)] = cityName
+				emit(true)
+			}
+		} catch(e: Exception) {
+			emit(false)
+		}
+	}
+
+	override suspend fun getSearchCityName() = flow {
+		val searchCityName = searchCityNameFlow.first()
+		emit(searchCityName)
 	}
 
 }
