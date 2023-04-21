@@ -1,5 +1,7 @@
 package org.soma.weatherviewer.common_ui
 
+import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -26,4 +28,9 @@ fun RecyclerView.submitForecast(forecastList: List<ForecastVO>) {
 @BindingAdapter("itemDecoration")
 fun RecyclerView.bindItemDecoration(itemDecoration: RecyclerView.ItemDecoration) {
 	this.addItemDecoration(itemDecoration)
+}
+
+@BindingAdapter("show")
+fun ProgressBar.bindShow(result: Boolean) {
+	visibility = if (result) View.VISIBLE else View.GONE
 }

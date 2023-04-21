@@ -17,7 +17,7 @@ class HomeFragment : Fragment() {
 
 	private lateinit var binding: FragmentHomeBinding
 	private val viewModel by viewModels<HomeViewModel>()
-	override fun onCreateView(
+	override fun onCreateView (
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View {
@@ -34,6 +34,12 @@ class HomeFragment : Fragment() {
 			adapter = ForecastAdapter(ForecastViewType.PORTRAIT)
 			itemDecoration = ForecastSpaceItemDecoration(30, ForecastViewType.PORTRAIT)
 		}
+	}
+
+	override fun onStart() {
+		super.onStart()
+
+		viewModel.fetchHomeData()
 	}
 
 	override fun onDestroyView() {

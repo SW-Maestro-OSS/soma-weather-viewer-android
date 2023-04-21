@@ -1,48 +1,55 @@
 package org.soma.weatherviewer.data.repository
 
+import com.skydoves.sandwich.onFailure
 import com.skydoves.sandwich.suspendOnSuccess
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import org.soma.weatherviewer.data.datasource.WeatherDataSource
+import org.soma.weatherviewer.data.dispatchers.Dispatcher
+import org.soma.weatherviewer.data.dispatchers.WeatherViewerDispatchers
 import org.soma.weatherviewer.data.model.mapper.asDomain
-import org.soma.weatherviewer.domain.model.WeatherTempUnits
+import org.soma.weatherviewer.domain.model.WeatherTempUnit
 import org.soma.weatherviewer.domain.model.translateToAPIUnit
 import org.soma.weatherviewer.domain.repository.WeatherRepository
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
-	private val weatherDataSource: WeatherDataSource
+	private val weatherDataSource: WeatherDataSource,
+	@Dispatcher(WeatherViewerDispatchers.IO) private val ioDispatcher: CoroutineDispatcher
 ) : WeatherRepository {
 
 	override fun getCurrentWeather(
 		lat: Float,
 		lon: Float,
-		units: WeatherTempUnits
+		units: WeatherTempUnit
 	) = flow {
 		val response = weatherDataSource.getCurrentWeather(lat = lat, lon = lon, units = units.translateToAPIUnit())
 		response.suspendOnSuccess {
-			emit(data.asDomain())
+			emit(data.asDomain(units))
 		}
-	}
+	}.flowOn(ioDispatcher)
 
 	override fun getCityWeather(
 		cityName: String,
-		units: WeatherTempUnits
+		units: WeatherTempUnit,
+		onError: (String?) -> Unit
 	) = flow {
 		val response = weatherDataSource.getCityWeather(cityName = cityName, units = units.translateToAPIUnit())
 		response.suspendOnSuccess {
-			emit(data.asDomain())
-		}
-	}
+			emit(data.asDomain(units))
+		}.onFailure { onError("올바르지 않은 도시이름 입니다") }
+	}.flowOn(ioDispatcher)
 
 	override fun getForecast(
 		lat: Float,
 		lon: Float,
-		units: WeatherTempUnits
+		units: WeatherTempUnit
 	) = flow {
 		val response = weatherDataSource.getForecast(lat = lat, lon = lon, units = units.translateToAPIUnit())
 		response.suspendOnSuccess {
-			emit(data.asDomain())
+			emit(data.asDomain(units))
 		}
-	}
+	}.flowOn(ioDispatcher)
 
 }

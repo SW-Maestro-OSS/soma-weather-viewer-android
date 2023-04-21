@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.soma.weatherviewer.data.datasource.WeatherDataSource
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -44,7 +45,7 @@ object NetworkModule {
 
 	@Provides
 	@Singleton
-	fun provideWeatherDataSource(retrofit: Retrofit): org.soma.weatherviewer.data.datasource.WeatherDataSource {
-		return retrofit.create(org.soma.weatherviewer.data.datasource.WeatherDataSource::class.java)
+	fun provideWeatherDataSource(retrofit: Retrofit): WeatherDataSource {
+		return retrofit.create(WeatherDataSource::class.java)
 	}
 }

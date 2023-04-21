@@ -43,6 +43,7 @@ dependencies {
     implementation project(path: ":feature:home")
     implementation project(path: ":feature:forecast")
     implementation project(path: ":feature:search")
+    implementation project(path: ":feature:setting")
 
     // data
     implementation project(path: ":core:data")
