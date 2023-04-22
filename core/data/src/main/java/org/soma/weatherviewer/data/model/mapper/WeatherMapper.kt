@@ -1,6 +1,7 @@
 package org.soma.weatherviewer.data.model.mapper
 
 import org.soma.weatherviewer.data.model.response.WeatherResponse
+import org.soma.weatherviewer.domain.model.WeatherName
 import org.soma.weatherviewer.domain.model.WeatherTempUnit
 import org.soma.weatherviewer.domain.model.WeatherVO
 import org.soma.weatherviewer.domain.model.mapper.DomainMapper
@@ -21,7 +22,7 @@ object WeatherMapper : DomainMapper<WeatherVO, WeatherResponse> {
 			dt = data.dt,
 			dateTime = UnixTimeTranslator.getWeatherDateText(data.dt.toString(), locale),
 			weatherId = data.weatherInfo[0].weatherId,
-			weatherName = data.weatherInfo[0].weatherName,
+			weatherName = WeatherName.valueOf(data.weatherInfo[0].weatherName.uppercase()).getDescription(locale),
 			description = data.weatherInfo[0].description,
 			weatherIcon = "https://openweathermap.org/img/wn/${data.weatherInfo[0].icon}@2x.png",
 
@@ -32,7 +33,7 @@ object WeatherMapper : DomainMapper<WeatherVO, WeatherResponse> {
 		)
 	}
 
-	fun calcDomainTemp(temp: Float): Float = (temp*10).roundToInt() / 10.0f
+	private fun calcDomainTemp(temp: Float): Float = (temp*10).roundToInt() / 10.0f
 }
 
 fun WeatherResponse.asDomain(unit: WeatherTempUnit, locale: Locale = Locale.KOREA): WeatherVO {

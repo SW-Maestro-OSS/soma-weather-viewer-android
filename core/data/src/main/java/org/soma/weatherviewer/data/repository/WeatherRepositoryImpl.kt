@@ -12,6 +12,8 @@ import org.soma.weatherviewer.data.model.mapper.asDomain
 import org.soma.weatherviewer.domain.model.WeatherTempUnit
 import org.soma.weatherviewer.domain.model.translateToAPIUnit
 import org.soma.weatherviewer.domain.repository.WeatherRepository
+import org.soma.weatherviewer.domain.translator.LangTranslator
+import java.util.*
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
@@ -22,33 +24,50 @@ class WeatherRepositoryImpl @Inject constructor(
 	override fun getCurrentWeather(
 		lat: Float,
 		lon: Float,
-		units: WeatherTempUnit
+		units: WeatherTempUnit,
+		locale: Locale
 	) = flow {
-		val response = weatherDataSource.getCurrentWeather(lat = lat, lon = lon, units = units.translateToAPIUnit())
+		val response = weatherDataSource.getCurrentWeather(
+			lat = lat,
+			lon = lon,
+			units = units.translateToAPIUnit(),
+			lang = LangTranslator.getApiLang(locale)
+		)
 		response.suspendOnSuccess {
-			emit(data.asDomain(units))
+			emit(data.asDomain(units, locale))
 		}
 	}.flowOn(ioDispatcher)
 
 	override fun getCityWeather(
 		cityName: String,
 		units: WeatherTempUnit,
+		locale: Locale,
 		onError: (String?) -> Unit
 	) = flow {
-		val response = weatherDataSource.getCityWeather(cityName = cityName, units = units.translateToAPIUnit())
+		val response = weatherDataSource.getCityWeather(
+			cityName = cityName,
+			units = units.translateToAPIUnit(),
+			lang = LangTranslator.getApiLang(locale)
+		)
 		response.suspendOnSuccess {
-			emit(data.asDomain(units))
+			emit(data.asDomain(units, locale))
 		}.onFailure { onError("올바르지 않은 도시이름 입니다") }
 	}.flowOn(ioDispatcher)
 
 	override fun getForecast(
 		lat: Float,
 		lon: Float,
-		units: WeatherTempUnit
+		units: WeatherTempUnit,
+		locale: Locale
 	) = flow {
-		val response = weatherDataSource.getForecast(lat = lat, lon = lon, units = units.translateToAPIUnit())
+		val response = weatherDataSource.getForecast(
+			lat = lat,
+			lon = lon,
+			units = units.translateToAPIUnit(),
+			lang = LangTranslator.getApiLang(locale)
+		)
 		response.suspendOnSuccess {
-			emit(data.asDomain(units))
+			emit(data.asDomain(units, locale))
 		}
 	}.flowOn(ioDispatcher)
 

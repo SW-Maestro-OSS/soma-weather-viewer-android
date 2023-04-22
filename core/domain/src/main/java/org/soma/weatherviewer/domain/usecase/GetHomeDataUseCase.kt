@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.flow
 import org.soma.weatherviewer.domain.datastore.WeatherViewerDataStore
 import org.soma.weatherviewer.domain.model.HomeModel
 import org.soma.weatherviewer.domain.repository.WeatherRepository
+import java.util.*
 import javax.inject.Inject
 
 class GetHomeDataUseCase @Inject constructor(
@@ -15,7 +16,8 @@ class GetHomeDataUseCase @Inject constructor(
 ) {
 	suspend operator fun invoke(
 		lat: Float,
-		lon: Float
+		lon: Float,
+		locale: Locale
 	): Flow<HomeModel> = flow {
 
 		weatherViewerDataStore.getUserTempUnit().collect { unit ->
@@ -23,12 +25,14 @@ class GetHomeDataUseCase @Inject constructor(
 				weatherRepository.getCurrentWeather(
 					lat = lat,
 					lon = lon,
-					units = unit
+					units = unit,
+					locale = locale
 				),
 				weatherRepository.getForecast(
 					lat = lat,
 					lon = lon,
-					units = unit
+					units = unit,
+					locale = locale
 				),
 			) { weather, forecast ->
 				HomeModel(weather, forecast)
