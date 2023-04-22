@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import org.soma.weatherviewer.domain.model.HomeModel
 import org.soma.weatherviewer.domain.model.WeatherVO
 import org.soma.weatherviewer.domain.usecase.GetHomeDataUseCase
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,9 +24,9 @@ class HomeViewModel @Inject constructor(
 	private val _homeDataFlow = MutableStateFlow(HomeModel(WeatherVO(), emptyList()))
 	val homeDataFlow = _homeDataFlow.asStateFlow()
 
-	fun fetchHomeData() {
+	fun fetchHomeData(locale: Locale) {
 		viewModelScope.launch {
-			getHomeDataUseCase(lat, lon).collectLatest {
+			getHomeDataUseCase(lat, lon, locale).collectLatest {
 				_homeDataFlow.value = it
 			}
 		}

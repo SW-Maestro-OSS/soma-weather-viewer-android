@@ -4,6 +4,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import org.soma.weatherviewer.domain.datastore.WeatherViewerDataStore
 import org.soma.weatherviewer.domain.repository.WeatherRepository
+import java.util.*
 import javax.inject.Inject
 
 class StoreSearchCityNameUseCase @Inject constructor(
@@ -12,10 +13,16 @@ class StoreSearchCityNameUseCase @Inject constructor(
 ) {
 	suspend operator fun invoke(
 		cityName: String,
+		locale: Locale,
 		onError: (String?) -> Unit
 	) = flow {
 		weatherViewerDataStore.getUserTempUnit().collect { unit ->
-			weatherRepository.getCityWeather(cityName = cityName, units = unit, onError).collect { weatherData ->
+			weatherRepository.getCityWeather(
+				cityName = cityName,
+				units = unit,
+				locale = locale,
+				onError
+			).collect { weatherData ->
 				weatherViewerDataStore.storeSearchCityName(
 					cityName,
 				).collect {

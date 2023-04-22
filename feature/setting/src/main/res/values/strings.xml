@@ -1,2 +1,6 @@
 <resources>
+    <string name="setting">Setting</string>
+    <string name="temperature_unit">Temperature Unit</string>
+    <string name="celsius">Celsius</string>
+    <string name="fahrenheit">Fahrenheit</string>
 </resources>

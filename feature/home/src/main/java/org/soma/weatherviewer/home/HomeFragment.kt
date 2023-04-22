@@ -1,35 +1,20 @@
 package org.soma.weatherviewer.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.soma.weatherviewer.common_ui.ForecastAdapter
-import org.soma.weatherviewer.domain.model.ForecastViewType
 import org.soma.weatherviewer.common_ui.ForecastSpaceItemDecoration
+import org.soma.weatherviewer.common_ui.base.BaseFragment
+import org.soma.weatherviewer.domain.model.ForecastViewType
 import org.soma.weatherviewer.home.databinding.FragmentHomeBinding
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
-	private lateinit var binding: FragmentHomeBinding
 	private val viewModel by viewModels<HomeViewModel>()
-	override fun onCreateView (
-		inflater: LayoutInflater, container: ViewGroup?,
-		savedInstanceState: Bundle?
-	): View {
-		binding = FragmentHomeBinding.inflate(inflater, container, false)
-		return binding.root
-	}
 
-	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		binding.lifecycleOwner = this@HomeFragment
-		super.onViewCreated(view, savedInstanceState)
-
-		with(binding) {
+	override fun initView() {
+		bind {
 			vm = viewModel
 			adapter = ForecastAdapter(ForecastViewType.PORTRAIT)
 			itemDecoration = ForecastSpaceItemDecoration(30, ForecastViewType.PORTRAIT)
@@ -39,16 +24,6 @@ class HomeFragment : Fragment() {
 	override fun onStart() {
 		super.onStart()
 
-		viewModel.fetchHomeData()
-	}
-
-	override fun onDestroyView() {
-		binding.unbind()
-		super.onDestroyView()
-	}
-
-	companion object {
-		@JvmStatic
-		fun newInstance() = HomeFragment()
+		viewModel.fetchHomeData(getLocale())
 	}
 }

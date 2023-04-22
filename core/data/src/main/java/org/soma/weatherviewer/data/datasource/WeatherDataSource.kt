@@ -16,14 +16,16 @@ interface WeatherDataSource {
 		@Query("lat") lat: Float,
 		@Query("lon") lon: Float,
 		@Query("appId") appId: String = BuildConfig.API_KEY,
-		@Query("units") units: String = WeatherTempUnit.CELSIUS.translateToAPIUnit()
+		@Query("units") units: String = WeatherTempUnit.CELSIUS.translateToAPIUnit(),
+		@Query("lang") lang: String = "en"
 	) : ApiResponse<WeatherResponse>
 
 	@GET("weather")
 	suspend fun getCityWeather(
 		@Query("q") cityName: String,
 		@Query("appId") appId: String = BuildConfig.API_KEY,
-		@Query("units") units: String = WeatherTempUnit.CELSIUS.translateToAPIUnit()
+		@Query("units") units: String = WeatherTempUnit.CELSIUS.translateToAPIUnit(),
+		@Query("lang") lang: String = "en"
 	) : ApiResponse<WeatherResponse>
 
 	@GET("forecast")
@@ -31,6 +33,7 @@ interface WeatherDataSource {
 		@Query("lat") lat: Float,
 		@Query("lon") lon: Float,
 		@Query("appId") appId: String = BuildConfig.API_KEY,
-		@Query("units") units: String = WeatherTempUnit.CELSIUS.translateToAPIUnit()
+		@Query("units") units: String = WeatherTempUnit.CELSIUS.translateToAPIUnit(),
+		@Query("lang") lang: String = "en"
 	) : ApiResponse<ForecastResponse>
 }
