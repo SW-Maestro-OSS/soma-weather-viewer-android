@@ -5,7 +5,6 @@
     tools:context=".HomeFragment">
 
     <data>
-
         <variable
             name="vm"
             type="org.soma.weatherviewer.home.HomeViewModel" />
@@ -50,7 +49,7 @@
                 android:id="@+id/home_city_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Seoul"
+                android:text="@string/home_city"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -149,7 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@{vm.homeDataFlow.weather.weatherName}"
+                android:text="@{vm.homeDataFlow.weather.description}"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -171,7 +170,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Current"
+                    android:text="@string/current_temp"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -195,7 +194,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Highest"
+                    android:text="@string/highest_temp"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -219,7 +218,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lowest"
+                    android:text="@string/lowest_temp"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -243,7 +242,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Humidity"
+                    android:text="@string/humidity"
                     android:textColor="@color/black" />
 
                 <TextView

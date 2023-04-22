@@ -57,7 +57,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/bg_search_edit_area"
             android:gravity="center_vertical"
-            android:hint="도시 이름을 검색해 보세요"
+            android:hint="@string/search_input_city_hint"
             android:maxLines="1"
             android:paddingHorizontal="20dp"
             android:paddingVertical="2dp"
@@ -168,7 +168,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Current"
+                    android:text="@string/current_temp"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -192,7 +192,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Highest"
+                    android:text="@string/highest_temp"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -216,7 +216,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lowest"
+                    android:text="@string/lowest_temp"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -240,7 +240,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Humidity"
+                    android:text="@string/humidity"
                     android:textColor="@color/black" />
 
                 <TextView

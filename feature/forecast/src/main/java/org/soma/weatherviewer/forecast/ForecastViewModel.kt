@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.soma.weatherviewer.domain.model.ForecastVO
 import org.soma.weatherviewer.domain.usecase.GetForecastUseCase
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,11 +22,12 @@ class ForecastViewModel @Inject constructor(
 
 	private val _forecastListFlow = MutableStateFlow<List<ForecastVO>>(emptyList())
 	val forecastListFlow = _forecastListFlow.asStateFlow()
-	fun fetchForecast() {
+	fun fetchForecast(locale: Locale) {
 		viewModelScope.launch {
 			getForecastUseCase(
 				lat = lat,
 				lon = lon,
+				locale = locale
 			).collectLatest {
 				_forecastListFlow.value = it
 			}

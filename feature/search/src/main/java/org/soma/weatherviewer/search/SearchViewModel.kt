@@ -11,6 +11,7 @@ import org.soma.weatherviewer.domain.model.WeatherVO
 import org.soma.weatherviewer.domain.usecase.GetCityWeatherUseCase
 import org.soma.weatherviewer.domain.usecase.GetSearchCityNameUseCase
 import org.soma.weatherviewer.domain.usecase.StoreSearchCityNameUseCase
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -41,11 +42,12 @@ class SearchViewModel @Inject constructor(
 		}
 	}
 
-	fun fetchCityWeather(cityName: String = "") {
+	fun fetchCityWeather(cityName: String = "", locale: Locale) {
 		val city = cityName.ifEmpty { _searchCityNameFlow.value }
 		viewModelScope.launch {
 			getCityWeatherUseCase(
 				city,
+				locale,
 				onError = { message ->
 					_toastMessage.value = message
 				}
@@ -55,10 +57,15 @@ class SearchViewModel @Inject constructor(
 		}
 	}
 
-	fun setCityName(cityName: String) {
+	/**
+	 * 사용자가 검색 시 cityName에 날씨정보를 호출하고 호출되지 않으면 존재하지 않는 city이므로
+	 * DataStore에 저장하지 않습니다.
+	 */
+	fun setCityName(cityName: String, locale: Locale) {
 		viewModelScope.launch {
 			storeSearchCityNameUseCase(
 				cityName,
+				locale = locale,
 				onError = { message ->
 					_toastMessage.value = message
 				}
@@ -69,6 +76,9 @@ class SearchViewModel @Inject constructor(
 		}
 	}
 
+	/**
+	 * StateFlow는 기존 message와 동일하면 collect되지 않기 때문에 저장된 toastmessage를 지웁니다
+	 */
 	fun clearToastMessage() {
 		_toastMessage.value = null
 	}
