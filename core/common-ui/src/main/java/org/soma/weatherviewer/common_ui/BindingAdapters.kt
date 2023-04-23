@@ -2,6 +2,7 @@ package org.soma.weatherviewer.common_ui
 
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -33,4 +34,9 @@ fun RecyclerView.bindItemDecoration(itemDecoration: RecyclerView.ItemDecoration)
 @BindingAdapter("show")
 fun ProgressBar.bindShow(result: Boolean) {
 	visibility = if (result) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("textHide")
+fun TextView.setVisibility(text: String) {
+	visibility = if (text.isEmpty()) View.GONE else View.VISIBLE
 }

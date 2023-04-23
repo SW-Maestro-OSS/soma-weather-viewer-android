@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginVertical="10dp"
-            android:src="@drawable/ic_launcher_background"
+            tools:src="@drawable/ic_launcher_background"
             app:imageUrl="@{item.weatherIcon}"
             app:layout_constraintBottom_toTopOf="@id/item_forecast_portrait_temp"
             app:layout_constraintEnd_toEndOf="parent"
