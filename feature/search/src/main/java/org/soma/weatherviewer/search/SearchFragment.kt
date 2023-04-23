@@ -27,7 +27,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
 	private fun setUIEvent() {
 		/**
-		 * 키보드 엔터 누를 시 [SearchViewModel]의 [setCityName]에서 API 정보를 불러올 수 있는지 체크합니다.
+		 * 키보드 엔터 누를 시 [SearchViewModel]에서 API 정보를 불러올 수 있는지 체크합니다.
 		 * 불러올 수 없다면 도시이름 역시 저장되지 않습니다.
 		 */
 		binding.searchInputArea.setOnEditorActionListener(object : TextView.OnEditorActionListener {
@@ -50,6 +50,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 	}
 
 	private fun subscribeUI() {
+
+		// toast message가 들어오는 것을 감지
 		lifecycleScope.launchWhenStarted {
 			viewModel.toastMessage.collectLatest { message ->
 				if (message == null || message.isEmpty()) return@collectLatest
@@ -61,6 +63,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
 	override fun onStart() {
 		super.onStart()
+
 		viewModel.fetchCityWeather(locale = getLocale())
 	}
 }

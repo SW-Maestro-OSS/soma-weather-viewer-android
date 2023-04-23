@@ -30,30 +30,33 @@ class SearchViewModel @Inject constructor(
 	private val _toastMessage = MutableStateFlow<String?>(null)
 	val toastMessage = _toastMessage.asStateFlow()
 
-	init {
-		fetchSearchCityName()
-	}
-
-	private fun fetchSearchCityName() {
+	fun fetchCityWeather(locale: Locale) {
 		viewModelScope.launch {
-			getSearchCityNameUseCase().collectLatest {
-				_searchCityNameFlow.value = it
-			}
+
+			fetchSearchedCityName()
+
+			val cityName = _searchCityNameFlow.value
+			fetchCityWeather(cityName, locale)
 		}
 	}
 
-	fun fetchCityWeather(cityName: String = "", locale: Locale) {
-		val city = cityName.ifEmpty { _searchCityNameFlow.value }
-		viewModelScope.launch {
-			getCityWeatherUseCase(
-				city,
-				locale,
-				onError = { message ->
-					_toastMessage.value = message
-				}
-			).collectLatest {
-				_searchCityWeatherFlow.value = it
+	// 검색했던 도시명을 불러옵니다.
+	private suspend fun fetchSearchedCityName() {
+		getSearchCityNameUseCase().collectLatest {
+			_searchCityNameFlow.value = it
+		}
+	}
+
+	// 검색했던 도시명을 통해 현재 날씨를 호출합니다.
+	private suspend fun fetchCityWeather(cityName: String, locale: Locale) {
+		getCityWeatherUseCase(
+			cityName,
+			locale,
+			onError = { message ->
+				_toastMessage.value = message
 			}
+		).collectLatest {
+			_searchCityWeatherFlow.value = it
 		}
 	}
 
@@ -62,15 +65,16 @@ class SearchViewModel @Inject constructor(
 	 * DataStore에 저장하지 않습니다.
 	 */
 	fun setCityName(cityName: String, locale: Locale) {
+		val city = cityName.substring(0, 1).uppercase() + cityName.substring(1)
 		viewModelScope.launch {
 			storeSearchCityNameUseCase(
-				cityName,
+				city,
 				locale = locale,
 				onError = { message ->
 					_toastMessage.value = message
 				}
 			).collectLatest {
-				_searchCityNameFlow.value = cityName
+				_searchCityNameFlow.value = city
 				_searchCityWeatherFlow.value = it
 			}
 		}
