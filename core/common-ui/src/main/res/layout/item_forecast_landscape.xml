@@ -13,21 +13,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_weather_card_view_no_shadow"
-        android:paddingHorizontal="20dp"
         android:paddingVertical="10dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/item_forecast_landscape_date_gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3" />
 
         <TextView
             android:id="@+id/item_forecast_landscape_date"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="end"
             android:text="@{item.dateText}"
             android:textColor="@color/black"
-            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item_forecast_landscape_date_gl"
+            app:layout_constraintHorizontal_bias="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="(Mon) 06:00" />
+            tools:text="(Mon) 06:00 PM" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/item_forecast_landscape_icon"
@@ -37,22 +45,31 @@
             android:background="@drawable/bg_forecast_card_view"
             app:imageUrl="@{item.weatherIcon}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/item_forecast_landscape_date"
+            app:layout_constraintStart_toEndOf="@id/item_forecast_landscape_date_gl"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher_background" />
 
-        <TextView
-            android:id="@+id/item_forecast_landscape_temp"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/item_forecast_landscape_humidity_gl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <TextView
+            android:id="@+id/item_forecast_landscape_temp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
             android:text="@{item.currentTemp}"
             android:textColor="@color/black"
-            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/item_forecast_landscape_humidity_gl"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="24%" />
+            tools:text="16.49F" />
 
         <TextView
             android:layout_width="0dp"
@@ -64,7 +81,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/item_forecast_landscape_temp"
+            app:layout_constraintEnd_toStartOf="@id/item_forecast_landscape_humidity_gl"
             app:layout_constraintStart_toEndOf="@id/item_forecast_landscape_icon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="clear sky" />

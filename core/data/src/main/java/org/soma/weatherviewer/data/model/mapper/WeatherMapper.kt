@@ -29,7 +29,7 @@ object WeatherMapper : DomainMapper<WeatherVO, WeatherResponse> {
 			currentTemp = TempTranslator.translateTempWithUnit(currentTemp, unit),
 			minTemp = TempTranslator.translateTempWithUnit(minTemp, unit),
 			maxTemp = TempTranslator.translateTempWithUnit(maxTemp, unit),
-			humidity = "${data.weatherMainInfo.humidity}%"
+			humidity = "${data.weatherMainInfo.humidity} %"
 		)
 	}
 

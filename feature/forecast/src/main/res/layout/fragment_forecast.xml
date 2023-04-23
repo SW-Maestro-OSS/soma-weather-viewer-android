@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="org.soma.weatherviewer.forecast.ForecastViewModel" />
@@ -30,9 +31,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adapter="@{adapter}"
+            android:overScrollMode="never"
             app:forecastItem="@{vm.forecastListFlow}"
             app:itemDecoration="@{itemDecoration}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_forecast_landscape" />
 
     </LinearLayout>
 </layout>
