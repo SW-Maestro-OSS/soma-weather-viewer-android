@@ -11,6 +11,9 @@ import retrofit2.http.Query
 
 interface WeatherDataSource {
 
+	/**
+	 * 위도, 경도에 따라 오늘의 날씨(Weather) 정보를 얻는 API
+	 */
 	@GET("weather")
 	suspend fun getCurrentWeather(
 		@Query("lat") lat: Float,
@@ -20,6 +23,9 @@ interface WeatherDataSource {
 		@Query("lang") lang: String = "en"
 	) : ApiResponse<WeatherResponse>
 
+	/**
+	 * 해당 도시의 날씨 (Weather) 정보를 얻는 API
+	 */
 	@GET("weather")
 	suspend fun getCityWeather(
 		@Query("q") cityName: String,
@@ -28,6 +34,9 @@ interface WeatherDataSource {
 		@Query("lang") lang: String = "en"
 	) : ApiResponse<WeatherResponse>
 
+	/**
+	 * 위도, 경도에 따라 5일치 정보(Forecast)를 얻는 API
+	 */
 	@GET("forecast")
 	suspend fun getForecast(
 		@Query("lat") lat: Float,

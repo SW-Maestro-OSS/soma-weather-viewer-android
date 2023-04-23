@@ -9,8 +9,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import org.soma.weatherviewer.data.datastore.WeatherViewerDataStoreImpl
-import org.soma.weatherviewer.domain.datastore.WeatherViewerDataStore
+import org.soma.weatherviewer.data.datastore.WeatherDataStoreImpl
+import org.soma.weatherviewer.domain.datastore.WeatherDataStore
 import javax.inject.Singleton
 
 @Module
@@ -23,7 +23,7 @@ object DataStoreModule {
 
 	@Singleton
 	@Provides
-	fun provideDataStore(@ApplicationContext context: Context): WeatherViewerDataStore {
-		return WeatherViewerDataStoreImpl(context.dataStore)
+	fun provideDataStore(@ApplicationContext context: Context): WeatherDataStore {
+		return WeatherDataStoreImpl(context.dataStore)
 	}
 }

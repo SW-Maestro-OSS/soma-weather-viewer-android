@@ -21,6 +21,9 @@ class WeatherRepositoryImpl @Inject constructor(
 	@Dispatcher(WeatherViewerDispatchers.IO) private val ioDispatcher: CoroutineDispatcher
 ) : WeatherRepository {
 
+	/**
+	 * 위도, 경도에 따라 오늘의 날씨(Weather) 정보를 얻는 기능
+	 */
 	override fun getCurrentWeather(
 		lat: Float,
 		lon: Float,
@@ -38,6 +41,9 @@ class WeatherRepositoryImpl @Inject constructor(
 		}
 	}.flowOn(ioDispatcher)
 
+	/**
+	 * 해당 도시의 날씨 (Weather) 정보를 얻는 기능
+	 */
 	override fun getCityWeather(
 		cityName: String,
 		units: WeatherTempUnit,
@@ -54,6 +60,9 @@ class WeatherRepositoryImpl @Inject constructor(
 		}.onFailure { onError("올바르지 않은 도시이름 입니다") }
 	}.flowOn(ioDispatcher)
 
+	/**
+	 * 위도, 경도에 따라 5일치 정보(Forecast)를 얻는 기능
+	 */
 	override fun getForecast(
 		lat: Float,
 		lon: Float,
