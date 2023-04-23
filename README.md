@@ -1,5 +1,12 @@
 ## Soma WeatherApp
 
+**한국어**
+![](image/korean.png)
+
+**영어**
+![](image/english.png)
+
+
  - SW 마에스트로 13기에서, Best Practice 용도로 만든 날씨 앱
 
 - 모듈화, 클린 아키텍처
