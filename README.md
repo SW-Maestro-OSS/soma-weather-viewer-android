@@ -12,7 +12,8 @@
 - 모듈화, 클린 아키텍처
 
 ***
-프로젝트 빌드 방법
+### 프로젝트 빌드 방법
+
 현재 Weather API를 사용할 때 필요한 key를 local.properties를 통해 처리했기 때문에 추가하셔야 합니다.
 
 1. [Weather API](https://openweathermap.org/api) 링크로 들어가서 회원가입 후 키를 발급 받습니다.
@@ -27,7 +28,7 @@ WEATHER_API_KEY = <<API KEY 입력>>
 ***
 ### 모듈 구조
 
-<p align="center"><img width="500" src="image/module.png"></p>
+<p align="center"><img width="700" src="image/module.png"></p>
 
 - **SomaWeather (앱 모듈)**
   - Application, MainActivity (SAA 구조)
@@ -74,7 +75,7 @@ WEATHER_API_KEY = <<API KEY 입력>>
 - 의존성 없이 잘 만들어 놓은 모듈은 다른 프로젝트에서도 재활용할 수 있습니다.
 - 멀티 모듈구조의 경우 빌드 속도가 기존 구조에 비해 빌드 속도를 단축시킬 수 있습니다.
 
-<p align="center"><img width="400" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbEoIeP%2FbtrDiUitjRr%2FKsIG3UdLcgMLNq1E6Pexy1%2Fimg.jpg"></p>
+<p align="center"><img width="500" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbEoIeP%2FbtrDiUitjRr%2FKsIG3UdLcgMLNq1E6Pexy1%2Fimg.jpg"></p>
 
 > **클린 아키텍처**
 
