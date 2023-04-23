@@ -41,8 +41,8 @@ object UnixTimeTranslator {
 
 		return when (locale) {
 			Locale.KOREA -> "${dateData[1]}월 ${dateData[2]}일 (${dayOfWeek}) ${timeData[0]}시"
-			Locale.UK -> "${dayOfWeek}, 22 $month, ${hour}:${minute} $ampm"
-			else -> "${dayOfWeek}, $month 22, ${hour}:${minute} $ampm"
+			Locale.UK -> "(${dayOfWeek}) 22 $month, ${hour}:${minute} $ampm"
+			else -> "(${dayOfWeek}) $month 22, ${hour}:${minute} $ampm"
 		}
 	}
 
@@ -66,7 +66,7 @@ object UnixTimeTranslator {
 
 		return when (locale) {
 			Locale.KOREA -> "${timeData[0]}:${timeData[1]} (${dayOfWeek})"
-			else -> "${dayOfWeek}, ${hour}:${minute} $ampm"
+			else -> "(${dayOfWeek}) ${hour}:${minute} $ampm"
 		}
 	}
 }
