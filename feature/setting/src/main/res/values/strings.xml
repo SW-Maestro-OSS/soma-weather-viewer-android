@@ -3,4 +3,5 @@
     <string name="temperature_unit">Temperature Unit</string>
     <string name="celsius">Celsius</string>
     <string name="fahrenheit">Fahrenheit</string>
+    <string name="setup_message">Setup Complete</string>
 </resources>

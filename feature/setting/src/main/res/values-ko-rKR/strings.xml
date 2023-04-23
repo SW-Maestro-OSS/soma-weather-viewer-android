@@ -4,4 +4,5 @@
     <string name="temperature_unit">기온 단위</string>
     <string name="celsius">섭씨</string>
     <string name="fahrenheit">화씨</string>
+    <string name="setup_message">설정 완료</string>
 </resources>
