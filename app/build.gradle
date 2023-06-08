@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace "org.soma.weatherviewer.android"
-    compileSdk 33
+    compileSdk compile_sdk_verion
 
     defaultConfig {
         applicationId "org.soma.weatherviewer.android"
-        minSdk 26
-        targetSdk 33
+        minSdk min_sdk_version
+        targetSdk target_sdk_version
         versionCode 1
         versionName "1.0"
 

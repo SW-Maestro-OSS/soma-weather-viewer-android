@@ -7,11 +7,11 @@ plugins {
 
 android {
     namespace 'org.soma.weatherviewer.search'
-    compileSdk 33
+    compileSdk compile_sdk_verion
 
     defaultConfig {
-        minSdk 26
-        targetSdk 33
+        minSdk min_sdk_version
+        targetSdk target_sdk_version
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
