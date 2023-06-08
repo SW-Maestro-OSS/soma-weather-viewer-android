@@ -13,7 +13,7 @@ enum class WeatherName(
 	BROKEN_CLOUDS("매우 흐림"),
 	SHOWER_RAIN("소나기"),
 	RAIN("비"),
-	THOUDERSTOM("천둥번개"),
+	THUNDERSTORM("천둥번개"),
 	SNOW("눈"),
 	DRIZZLE("이슬비"),
 	SMOKE("연기"),
