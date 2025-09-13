@@ -9,7 +9,7 @@ import org.soma.weatherviewer.domain.repository.WeatherRepository
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface RepositoryModule {
+internal interface RepositoryModule {
 
 	@Binds
 	fun bindsWeatherRepository(

@@ -1,4 +1,4 @@
-package org.soma.weatherviewer.data.datasource
+package org.soma.weatherviewer.data.api
 
 import com.skydoves.sandwich.ApiResponse
 import org.soma.weatherviewer.data.BuildConfig
@@ -9,7 +9,7 @@ import org.soma.weatherviewer.domain.model.translateToAPIUnit
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface WeatherDataSource {
+interface WeatherApi {
 
 	/**
 	 * 위도, 경도에 따라 오늘의 날씨(Weather) 정보를 얻는 API

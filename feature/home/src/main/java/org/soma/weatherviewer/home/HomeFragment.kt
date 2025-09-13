@@ -24,6 +24,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 	override fun onStart() {
 		super.onStart()
 
-		viewModel.fetchHomeData(getLocale())
+		viewModel.fetchHomeData()
 	}
 }

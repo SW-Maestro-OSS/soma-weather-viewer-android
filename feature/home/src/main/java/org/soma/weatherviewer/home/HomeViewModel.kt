@@ -7,11 +7,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import org.soma.weatherviewer.domain.model.ForecastVO
-import org.soma.weatherviewer.domain.model.HomeModel
-import org.soma.weatherviewer.domain.model.WeatherVO
+import org.soma.weatherviewer.domain.model.Coordinates
+import org.soma.weatherviewer.domain.model.Latitude
+import org.soma.weatherviewer.domain.model.Longitude
 import org.soma.weatherviewer.domain.usecase.GetHomeDataUseCase
-import java.util.Locale
+import org.soma.weatherviewer.home.model.HomeUiModel
+import org.soma.weatherviewer.home.model.toUiModel
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,29 +20,21 @@ class HomeViewModel @Inject constructor(
 	private val getHomeDataUseCase: GetHomeDataUseCase
 ) : ViewModel() {
 
-	private val lat: Float = 37.5683f
-	private val lon: Float = 126.9778f
-
-	private val _homeDataFlow = MutableStateFlow(
-		HomeModel(
-			WeatherVO(),
-			listOf(
-				ForecastVO(),
-				ForecastVO(),
-				ForecastVO(),
-				ForecastVO(),
-				ForecastVO(),
-				ForecastVO(),
-			)
-		)
-	)
+	private val _homeDataFlow = MutableStateFlow(HomeUiModel.EMPTY)
 	val homeDataFlow = _homeDataFlow.asStateFlow()
 
-	fun fetchHomeData(locale: Locale) {
+	fun fetchHomeData() {
 		viewModelScope.launch {
-			getHomeDataUseCase(lat, lon, locale).collectLatest {
-				_homeDataFlow.value = it
+			getHomeDataUseCase(defaultCoordinates).collectLatest {
+				_homeDataFlow.value = it.toUiModel()
 			}
 		}
+	}
+
+	companion object {
+		private val defaultCoordinates = Coordinates(
+			latitude = Latitude(37.5683f),
+			longitude = Longitude(126.9778f)
+		)
 	}
 }

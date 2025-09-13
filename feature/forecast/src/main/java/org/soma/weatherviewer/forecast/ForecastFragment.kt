@@ -23,6 +23,6 @@ class ForecastFragment : BaseFragment<FragmentForecastBinding>(R.layout.fragment
 
 	override fun onStart() {
 		super.onStart()
-		viewModel.fetchForecast(getLocale())
+		viewModel.fetchForecast()
 	}
 }

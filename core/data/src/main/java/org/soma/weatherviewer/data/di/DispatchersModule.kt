@@ -11,7 +11,7 @@ import org.soma.weatherviewer.data.dispatchers.WeatherViewerDispatchers
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DispatchersModule  {
+internal object DispatchersModule  {
 
 	@Provides
 	@Dispatcher(WeatherViewerDispatchers.IO)

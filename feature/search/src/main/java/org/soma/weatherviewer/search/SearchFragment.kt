@@ -38,7 +38,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
 					viewModel.setCityName(
 						binding.searchInputArea.text.toString(),
-						locale = getLocale()
 					)
 
 					binding.searchInputArea.text?.clear()
@@ -59,11 +58,5 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 				viewModel.clearToastMessage()
 			}
 		}
-	}
-
-	override fun onStart() {
-		super.onStart()
-
-		viewModel.fetchCityWeather(locale = getLocale())
 	}
 }

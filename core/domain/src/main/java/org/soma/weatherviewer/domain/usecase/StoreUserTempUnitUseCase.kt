@@ -1,20 +1,16 @@
 package org.soma.weatherviewer.domain.usecase
 
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
-import org.soma.weatherviewer.domain.datastore.WeatherDataStore
+import kotlinx.coroutines.flow.Flow
 import org.soma.weatherviewer.domain.model.WeatherTempUnit
+import org.soma.weatherviewer.domain.repository.WeatherRepository
 import javax.inject.Inject
 
 /**
- * 사용자가 설정한 기온단위를 [WeatherDataStore]에 저장하는 UseCase
+ * 사용자가 설정한 기온단위를 Local에 저장하는 UseCase
  */
 class StoreUserTempUnitUseCase @Inject constructor(
-	private val weatherDataStore: WeatherDataStore
+	private val weatherRepository: WeatherRepository
 ) {
-	suspend operator fun invoke(unit: WeatherTempUnit) = flow {
-		weatherDataStore.storeUserTempUnit(unit).collect { isSuccess ->
-			emit(isSuccess)
-		}
-	}
+	operator fun invoke(unit: WeatherTempUnit): Flow<Boolean> =
+		weatherRepository.storeUserTempUnit(unit)
 }

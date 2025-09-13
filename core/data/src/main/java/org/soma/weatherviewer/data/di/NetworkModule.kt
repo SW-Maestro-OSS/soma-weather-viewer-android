@@ -7,14 +7,14 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.soma.weatherviewer.data.datasource.WeatherDataSource
+import org.soma.weatherviewer.data.api.WeatherApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+internal object NetworkModule {
 
 	private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
@@ -45,7 +45,7 @@ object NetworkModule {
 
 	@Provides
 	@Singleton
-	fun provideWeatherDataSource(retrofit: Retrofit): WeatherDataSource {
-		return retrofit.create(WeatherDataSource::class.java)
+	fun provideWeatherDataSource(retrofit: Retrofit): WeatherApi {
+		return retrofit.create(WeatherApi::class.java)
 	}
 }
